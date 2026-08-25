@@ -419,55 +419,74 @@
     .c-more .arr { transition: transform .25s; }
     .c-more:hover .arr { transform: translateX(-5px); }
 
-    /* ===== קטלוג לפי תחום עניין ===== */
-    .cat-wrap {
-        background: #fff; border-radius: 32px; padding: 54px 44px 44px;
+    /* ===== רשימת קורסים מתרחבת ===== */
+    .acc-wrap {
+        background: #fff; border-radius: 32px; padding: 54px 48px 30px;
         box-shadow: var(--shadow-md); border: 1px solid rgba(16,20,51,.05);
     }
-    .cat-head { text-align: center; margin-bottom: 28px; }
+    .cat-head { text-align: center; margin-bottom: 30px; }
     .cat-head h3 { font-family: var(--font-display); font-weight: normal; font-size: clamp(1.4rem, 2.8vw, 1.95rem); color: var(--ink); }
     .cat-head p { color: var(--ink-soft); font-size: .97rem; margin-top: 6px; }
-    .cat-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 34px; }
-    .cat-chip {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-family: var(--font-body); font-weight: 700; font-size: .95rem;
-        color: var(--ink-soft); background: var(--mist);
-        border: 1.5px solid transparent; border-radius: 50px;
-        padding: 10px 22px; cursor: pointer;
-        transition: background .22s, color .22s, border-color .22s, transform .15s;
+    .acc-item { border-top: 1px solid rgba(16,20,51,.09); }
+    .acc-item:last-child { border-bottom: 1px solid rgba(16,20,51,.09); }
+    .acc-head {
+        width: 100%; background: none; border: 0; cursor: pointer;
+        display: flex; align-items: center; gap: 18px;
+        padding: 22px 6px; text-align: right; font-family: var(--font-body);
+        transition: padding .3s;
     }
-    .cat-chip:hover { transform: translateY(-1px); border-color: rgba(99,102,241,.3); }
-    .cat-chip.on { background: var(--ink); color: #fff; }
-    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .cat-card {
-        background: #fff; border: 1px solid rgba(16,20,51,.09); border-radius: 18px;
-        padding: 22px 22px 18px; text-align: right; cursor: pointer;
-        display: flex; flex-direction: column; gap: 11px;
-        font-family: var(--font-body);
-        transition: transform .22s, box-shadow .22s, border-color .22s, opacity .3s;
+    .acc-head:hover { padding-inline-start: 14px; }
+    .acc-num {
+        font-family: var(--font-display); font-size: .95rem;
+        color: transparent; -webkit-text-stroke: 1.1px rgba(16,20,51,.35);
+        min-width: 30px; flex-shrink: 0;
     }
-    .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(99,102,241,.16); border-color: rgba(99,102,241,.3); }
-    .cat-card.hidden-out { opacity: 0; transform: scale(.96); pointer-events: none; }
-    .cat-top { display: flex; align-items: center; gap: 12px; }
-    .cat-em {
-        width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0;
-        display: inline-flex; align-items: center; justify-content: center; font-size: 1.4rem;
+    .acc-em {
+        width: 44px; height: 44px; border-radius: 13px; flex-shrink: 0;
+        display: inline-flex; align-items: center; justify-content: center; font-size: 1.35rem;
+        transform: rotate(-3deg); transition: transform .3s;
     }
-    .cat-name { font-size: 1.06rem; font-weight: 800; color: var(--ink); line-height: 1.3; flex: 1; }
-    .cat-status { flex-shrink: 0; width: 10px; height: 10px; border-radius: 50%; margin-top: 2px; }
-    .cat-status.open { background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,.15); }
-    .cat-status.soon { background: #F5A623; box-shadow: 0 0 0 4px rgba(245,166,35,.14); }
-    .cat-tag { color: var(--ink-soft); font-size: .9rem; line-height: 1.55; flex: 1; }
-    .cat-meta { display: flex; flex-wrap: wrap; gap: 6px; }
-    .cat-foot {
-        display: flex; align-items: center; justify-content: space-between; gap: 10px;
-        border-top: 1px solid rgba(16,20,51,.07); padding-top: 13px; margin-top: 2px;
+    .acc-item.open .acc-em, .acc-head:hover .acc-em { transform: rotate(0) scale(1.06); }
+    .acc-name {
+        font-family: var(--font-display); font-weight: normal;
+        font-size: clamp(1.15rem, 2.4vw, 1.6rem); color: var(--ink); flex: 1;
+        transition: color .25s;
     }
-    .cat-price { font-weight: 800; font-size: 1.02rem; color: var(--ink); }
-    .cat-price small { font-weight: 600; font-size: .78rem; color: var(--ink-soft); }
-    .cat-go { color: var(--accent-deep); font-weight: 800; font-size: .86rem; display: inline-flex; align-items: center; gap: 6px; }
-    .cat-card:hover .cat-go .arr { transform: translateX(-5px); }
-    .cat-go .arr { transition: transform .22s; }
+    .acc-head:hover .acc-name { color: var(--accent-deep); }
+    .acc-side { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; }
+    .acc-price { font-weight: 800; font-size: 1rem; color: var(--ink); }
+    .acc-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .acc-dot.open { background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,.15); }
+    .acc-dot.soon { background: #F5A623; box-shadow: 0 0 0 4px rgba(245,166,35,.14); }
+    .acc-st { font-size: .82rem; font-weight: 700; color: var(--ink-soft); }
+    .acc-x {
+        width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--mist); color: var(--ink); font-size: 1.15rem; font-weight: 600;
+        transition: transform .35s, background .25s, color .25s;
+    }
+    .acc-item.open .acc-x { transform: rotate(45deg); background: var(--ink); color: #fff; }
+    .acc-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .42s cubic-bezier(.4,0,.2,1); }
+    .acc-item.open .acc-body { grid-template-rows: 1fr; }
+    .acc-inner { overflow: hidden; min-height: 0; }
+    .acc-content { padding: 4px 52px 30px 6px; }
+    .acc-tagline { color: var(--ink-soft); font-size: 1.02rem; max-width: 640px; margin-bottom: 16px; }
+    .acc-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .acc-syl {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px;
+        margin-bottom: 24px; max-width: 860px;
+    }
+    .acc-syl li { display: flex; gap: 11px; align-items: flex-start; list-style: none; }
+    .acc-syl .n {
+        width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+        background: rgba(99,102,241,.1); color: var(--accent-deep);
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: .74rem; font-weight: 800;
+    }
+    .acc-syl b { display: block; font-size: .93rem; color: var(--ink); }
+    .acc-syl span { color: var(--ink-soft); font-size: .84rem; }
+    .acc-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .acc-cta .btn { padding: 12px 26px; font-size: .95rem; }
 
     /* ===== חלון סילבוס ===== */
     .modal-wrap {
@@ -747,9 +766,13 @@
         .sec-head { margin-bottom: 36px; }
         .tracks-grid, .feat-grid, .steps, .blog-grid, .on-grid, .video-grid { grid-template-columns: 1fr; }
         .modal-box { padding: 26px 20px 22px; max-height: 92svh; border-radius: 20px; }
-        .cat-wrap { padding: 34px 16px 26px; border-radius: 24px; }
-        .cat-grid { grid-template-columns: 1fr; }
-        .cat-chip { padding: 9px 16px; font-size: .88rem; }
+        .acc-wrap { padding: 30px 16px 18px; border-radius: 24px; }
+        .acc-head { gap: 10px; padding: 17px 2px; flex-wrap: wrap; }
+        .acc-num { display: none; }
+        .acc-st { display: none; }
+        .acc-content { padding: 2px 8px 24px; }
+        .acc-syl { grid-template-columns: 1fr; }
+        .acc-cta .btn { width: 100%; }
         .lvl { padding-right: 50px; margin-bottom: 44px; }
         .lvl::before { right: 17px; top: 46px; bottom: -46px; }
         .lvl-title { font-size: 1.25rem; padding-top: 4px; }
@@ -988,14 +1011,13 @@
                 <div class="on-grid" id="openNowGrid"></div>
             </div>
 
-            <!-- קטלוג לפי תחום עניין -->
-            <div class="cat-wrap reveal">
+            <!-- רשימת הקורסים המתרחבת -->
+            <div class="acc-wrap reveal">
                 <div class="cat-head">
-                    <h3>מה מעניין את הילד שלך?</h3>
-                    <p>בוחרים תחום — ורואים את הקורסים שמתאימים לו. אין סדר מחייב.</p>
+                    <h3>כל הקורסים, במבט אחד</h3>
+                    <p>לחצו על שם קורס — וכל הפרטים והסילבוס נפתחים במקום.</p>
                 </div>
-                <div class="cat-chips" id="catChips" role="tablist" aria-label="סינון לפי תחום"></div>
-                <div class="cat-grid" id="catGrid"></div>
+                <div class="acc" id="accList"></div>
             </div>
         </div>
     </section>
@@ -1353,65 +1375,51 @@
         onGrid.appendChild(el);
     });
 
-    // ===== קטלוג לפי תחום עניין =====
-    (function catalog(){
-        const CATS = [
-            { id: 'all',    em: '✨', label: 'הכול' },
-            { id: 'create', em: '🎨', label: 'ליצור' },
-            { id: 'build',  em: '💻', label: 'לבנות ולתכנת' },
-            { id: 'biz',    em: '💼', label: 'עסקים וכסף' },
-            { id: 'stage',  em: '🎤', label: 'במה והשפעה' }
-        ];
-        const chipsEl = document.getElementById('catChips'), grid = document.getElementById('catGrid');
-        const cards = COURSES.map((co, i) => {
-            const el = document.createElement('button');
-            el.className = 'cat-card';
-            el.setAttribute('aria-label', 'סילבוס ' + co.name);
-            el.innerHTML = `<div class="cat-top">
-                    <span class="cat-em" style="background:${co.c}">${co.em}</span>
-                    <span class="cat-name">${co.name}</span>
-                    <span class="cat-status ${co.status === 'open' ? 'open' : 'soon'}" title="${co.status === 'open' ? 'ההרשמה פתוחה' : 'בקרוב'}"></span>
-                </div>
-                <p class="cat-tag">${co.tag}</p>
-                <div class="cat-meta">
-                    <span class="chip">גיל ${co.age}</span>
-                    <span class="chip">${co.count || '8 מפגשים'}</span>
-                    ${co.prereq ? `<span class="chip">${co.prereq}</span>` : ''}
-                    <span class="chip ${STATUS[co.status][0]}">${STATUS[co.status][1]}</span>
-                </div>
-                <div class="cat-foot">
-                    <span class="cat-price">${co.price || '<small>המחיר יעודכן בקרוב</small>'}</span>
-                    <span class="cat-go">לסילבוס המלא <span class="arr">←</span></span>
-                </div>`;
-            el.addEventListener('click', () => openCourse(i));
-            grid.appendChild(el);
-            return el;
+    // ===== רשימת הקורסים המתרחבת =====
+    (function accordion(){
+        const list = document.getElementById('accList');
+        const items = COURSES.map((co, i) => {
+            const item = document.createElement('div');
+            item.className = 'acc-item';
+            const cta = ctaFor(co);
+            item.innerHTML = `<button class="acc-head" aria-expanded="false">
+                    <span class="acc-num">${String(i + 1).padStart(2, '0')}</span>
+                    <span class="acc-em" style="background:${co.c}">${co.em}</span>
+                    <span class="acc-name">${co.name}</span>
+                    <span class="acc-side">
+                        ${co.price ? `<span class="acc-price">${co.price}</span>` : ''}
+                        <span class="acc-dot ${co.status === 'open' ? 'open' : 'soon'}"></span>
+                        <span class="acc-st">${co.status === 'open' ? 'ההרשמה פתוחה' : 'בקרוב'}</span>
+                    </span>
+                    <span class="acc-x">+</span>
+                </button>
+                <div class="acc-body"><div class="acc-inner"><div class="acc-content">
+                    <p class="acc-tagline">${co.tag}</p>
+                    <div class="acc-chips">
+                        <span class="chip">גיל ${co.age}</span>
+                        <span class="chip">${co.count || '8 מפגשים'}</span>
+                        ${co.prereq ? `<span class="chip">${co.prereq}</span>` : ''}
+                    </div>
+                    <div class="mc-deliver" style="max-width:640px;">מסיימים עם: ${co.deliver}</div>
+                    <ul class="acc-syl">${co.sessions.map((sn, j) =>
+                        `<li><span class="n">${j + 1}</span><div><b>${sn[0]}</b><span>${sn[1]}</span></div></li>`).join('')}</ul>
+                    <div class="acc-cta">
+                        <a class="btn ${co.status === 'open' ? 'btn-ink' : 'btn-wa'}" href="${cta.href}"${cta.ext ? ' target="_blank" rel="noopener"' : ''}>${cta.label} <span class="arr">←</span></a>
+                    </div>
+                </div></div></div>`;
+            list.appendChild(item);
+            return item;
         });
-        let current = 'all';
-        function apply(catId) {
-            current = catId;
-            [...chipsEl.children].forEach(c => c.classList.toggle('on', c.dataset.cat === catId));
-            COURSES.forEach((co, i) => {
-                const show = catId === 'all' || (co.cat || []).includes(catId);
-                const el = cards[i];
-                if (show) {
-                    el.style.display = '';
-                    requestAnimationFrame(() => el.classList.remove('hidden-out'));
-                } else {
-                    el.classList.add('hidden-out');
-                    setTimeout(() => { if (current === catId && !((co.cat || []).includes(current) || current === 'all')) el.style.display = 'none'; }, 280);
-                }
+        function toggle(i, forceOpen) {
+            const willOpen = forceOpen || !items[i].classList.contains('open');
+            items.forEach((it, j) => {
+                const on = willOpen && j === i;
+                it.classList.toggle('open', on);
+                it.querySelector('.acc-head').setAttribute('aria-expanded', on);
             });
         }
-        CATS.forEach(c => {
-            const b = document.createElement('button');
-            b.className = 'cat-chip'; b.dataset.cat = c.id;
-            b.setAttribute('role', 'tab');
-            b.innerHTML = `<span>${c.em}</span> ${c.label}`;
-            b.addEventListener('click', () => apply(c.id));
-            chipsEl.appendChild(b);
-        });
-        apply('all');
+        items.forEach((it, i) => it.querySelector('.acc-head').addEventListener('click', () => toggle(i)));
+        toggle(0, true); // הראשון פתוח — מדגים את הדפוס
     })();
 
     const cm = document.getElementById('courseModal');
