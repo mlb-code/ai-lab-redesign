@@ -419,74 +419,104 @@
     .c-more .arr { transition: transform .25s; }
     .c-more:hover .arr { transform: translateX(-5px); }
 
-    /* ===== רשימת קורסים מתרחבת ===== */
-    .acc-wrap {
-        background: #fff; border-radius: 32px; padding: 54px 48px 30px;
+    /* ===== חפיסות ומניפה ===== */
+    .fan-wrap {
+        background: #fff; border-radius: 32px; padding: 54px 40px 46px;
         box-shadow: var(--shadow-md); border: 1px solid rgba(16,20,51,.05);
+        overflow: hidden;
     }
-    .cat-head { text-align: center; margin-bottom: 30px; }
+    .cat-head { text-align: center; margin-bottom: 34px; }
     .cat-head h3 { font-family: var(--font-display); font-weight: normal; font-size: clamp(1.4rem, 2.8vw, 1.95rem); color: var(--ink); }
     .cat-head p { color: var(--ink-soft); font-size: .97rem; margin-top: 6px; }
-    .acc-item { border-top: 1px solid rgba(16,20,51,.09); }
-    .acc-item:last-child { border-bottom: 1px solid rgba(16,20,51,.09); }
-    .acc-head {
-        width: 100%; background: none; border: 0; cursor: pointer;
-        display: flex; align-items: center; gap: 18px;
-        padding: 22px 6px; text-align: right; font-family: var(--font-body);
-        transition: padding .3s;
+
+    .decks { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
+    .deck {
+        position: relative; width: 178px; border: 0; cursor: pointer;
+        border-radius: 20px; padding: 24px 16px 18px;
+        background: linear-gradient(150deg, var(--c1), var(--c2));
+        color: #fff; font-family: var(--font-body); text-align: center;
+        box-shadow: 0 14px 34px rgba(16,20,51,.18);
+        transition: transform .3s, box-shadow .3s;
+        animation: deckFloat 4.5s ease-in-out infinite;
     }
-    .acc-head:hover { padding-inline-start: 14px; }
-    .acc-num {
-        font-family: var(--font-display); font-size: .95rem;
-        color: transparent; -webkit-text-stroke: 1.1px rgba(16,20,51,.35);
-        min-width: 30px; flex-shrink: 0;
+    .deck:nth-child(2) { animation-delay: -1.1s; }
+    .deck:nth-child(3) { animation-delay: -2.2s; }
+    .deck:nth-child(4) { animation-delay: -3.3s; }
+    @keyframes deckFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .deck::before, .deck::after {
+        content: ""; position: absolute; inset: 0; border-radius: 20px;
+        background: inherit; z-index: -1; opacity: .55;
+        transition: transform .35s;
     }
-    .acc-em {
-        width: 44px; height: 44px; border-radius: 13px; flex-shrink: 0;
-        display: inline-flex; align-items: center; justify-content: center; font-size: 1.35rem;
-        transform: rotate(-3deg); transition: transform .3s;
+    .deck::before { transform: rotate(-4deg) translateY(5px); }
+    .deck::after { transform: rotate(3deg) translateY(3px); opacity: .35; }
+    .deck:hover { transform: translateY(-8px); animation-play-state: paused; }
+    .deck:hover::before { transform: rotate(-7deg) translateY(7px); }
+    .deck:hover::after { transform: rotate(5.5deg) translateY(5px); }
+    .deck.on {
+        transform: translateY(-10px) scale(1.05); animation-play-state: paused;
+        box-shadow: 0 24px 54px var(--glow), 0 0 0 3px #fff, 0 0 0 5.5px var(--c1);
     }
-    .acc-item.open .acc-em, .acc-head:hover .acc-em { transform: rotate(0) scale(1.06); }
-    .acc-name {
-        font-family: var(--font-display); font-weight: normal;
-        font-size: clamp(1.15rem, 2.4vw, 1.6rem); color: var(--ink); flex: 1;
-        transition: color .25s;
+    .deck.on::before { transform: rotate(-8deg) translateY(9px); }
+    .deck.on::after { transform: rotate(6deg) translateY(6px); }
+    .deck-em { font-size: 2.1rem; display: block; margin-bottom: 8px; transition: transform .3s; }
+    .deck.on .deck-em { animation: emBounce .5s ease; }
+    @keyframes emBounce { 0% { transform: scale(1); } 40% { transform: scale(1.35) rotate(-8deg); } 100% { transform: scale(1); } }
+    .deck-label { font-family: var(--font-display); font-weight: normal; font-size: 1.12rem; display: block; margin-bottom: 7px; line-height: 1.25; }
+    .deck-count {
+        display: inline-block; background: rgba(255,255,255,.22); border-radius: 50px;
+        font-size: .74rem; font-weight: 700; padding: 3px 12px;
     }
-    .acc-head:hover .acc-name { color: var(--accent-deep); }
-    .acc-side { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; }
-    .acc-price { font-weight: 800; font-size: 1rem; color: var(--ink); }
-    .acc-dot { width: 9px; height: 9px; border-radius: 50%; }
-    .acc-dot.open { background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,.15); }
-    .acc-dot.soon { background: #F5A623; box-shadow: 0 0 0 4px rgba(245,166,35,.14); }
-    .acc-st { font-size: .82rem; font-weight: 700; color: var(--ink-soft); }
-    .acc-x {
-        width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
-        display: inline-flex; align-items: center; justify-content: center;
-        background: var(--mist); color: var(--ink); font-size: 1.15rem; font-weight: 600;
-        transition: transform .35s, background .25s, color .25s;
+
+    .fan-stage {
+        position: relative; min-height: 380px;
+        display: flex; justify-content: center; align-items: flex-start;
+        padding-top: 44px;
     }
-    .acc-item.open .acc-x { transform: rotate(45deg); background: var(--ink); color: #fff; }
-    .acc-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .42s cubic-bezier(.4,0,.2,1); }
-    .acc-item.open .acc-body { grid-template-rows: 1fr; }
-    .acc-inner { overflow: hidden; min-height: 0; }
-    .acc-content { padding: 4px 52px 30px 6px; }
-    .acc-tagline { color: var(--ink-soft); font-size: 1.02rem; max-width: 640px; margin-bottom: 16px; }
-    .acc-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
-    .acc-syl {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px;
-        margin-bottom: 24px; max-width: 860px;
+    .fan-stage::before {
+        content: ""; position: absolute; top: 18px; right: 50%; transform: translateX(50%);
+        width: 70%; height: 78%; border-radius: 50%;
+        background: radial-gradient(ellipse, var(--stage-glow, rgba(99,102,241,.12)), transparent 68%);
+        pointer-events: none; transition: background .5s;
     }
-    .acc-syl li { display: flex; gap: 11px; align-items: flex-start; list-style: none; }
-    .acc-syl .n {
-        width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
-        background: rgba(99,102,241,.1); color: var(--accent-deep);
-        display: inline-flex; align-items: center; justify-content: center;
-        font-size: .74rem; font-weight: 800;
+    .fcard {
+        position: relative; width: 236px; margin: 0 -8px; flex-shrink: 0;
+        background: #fff; border: 1px solid rgba(16,20,51,.1); border-radius: 18px;
+        padding: 20px 18px 16px; text-align: right; cursor: pointer;
+        font-family: var(--font-body);
+        box-shadow: 0 14px 36px rgba(16,20,51,.13);
+        transform: rotate(var(--rot, 0deg)) translateY(var(--ty, 0px));
+        transition: transform .55s cubic-bezier(.34,1.45,.64,1), box-shadow .3s;
+        display: flex; flex-direction: column; gap: 9px;
     }
-    .acc-syl b { display: block; font-size: .93rem; color: var(--ink); }
-    .acc-syl span { color: var(--ink-soft); font-size: .84rem; }
-    .acc-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    .acc-cta .btn { padding: 12px 26px; font-size: .95rem; }
+    .fcard:hover {
+        transform: rotate(0deg) translateY(calc(var(--ty, 0px) - 24px)) scale(1.05);
+        box-shadow: 0 26px 60px rgba(99,102,241,.28);
+        z-index: 6;
+    }
+    .fcard.away { opacity: 0; transform: rotate(var(--rot)) translateY(-120px) scale(.6); transition: all .28s ease-in; }
+    .fc-top { display: flex; align-items: center; gap: 10px; }
+    .fc-em {
+        width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+        display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .fc-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-inline-start: auto; }
+    .fc-dot.open { background: #22C55E; box-shadow: 0 0 0 3.5px rgba(34,197,94,.16); }
+    .fc-dot.soon { background: #F5A623; box-shadow: 0 0 0 3.5px rgba(245,166,35,.15); }
+    .fc-name { font-weight: 800; font-size: 1.04rem; color: var(--ink); line-height: 1.3; }
+    .fc-tag {
+        color: var(--ink-soft); font-size: .84rem; line-height: 1.5; flex: 1;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .fc-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+    .fc-meta .chip { font-size: .7rem; padding: 2px 9px; }
+    .fc-foot {
+        display: flex; align-items: center; justify-content: space-between; gap: 8px;
+        border-top: 1px solid rgba(16,20,51,.07); padding-top: 11px;
+    }
+    .fc-price { font-weight: 800; font-size: .95rem; color: var(--ink); }
+    .fc-price small { font-weight: 600; font-size: .74rem; color: var(--ink-soft); }
+    .fc-go { color: var(--accent-deep); font-weight: 800; font-size: .8rem; white-space: nowrap; }
 
     /* ===== חלון סילבוס ===== */
     .modal-wrap {
@@ -766,13 +796,11 @@
         .sec-head { margin-bottom: 36px; }
         .tracks-grid, .feat-grid, .steps, .blog-grid, .on-grid, .video-grid { grid-template-columns: 1fr; }
         .modal-box { padding: 26px 20px 22px; max-height: 92svh; border-radius: 20px; }
-        .acc-wrap { padding: 30px 16px 18px; border-radius: 24px; }
-        .acc-head { gap: 10px; padding: 17px 2px; flex-wrap: wrap; }
-        .acc-num { display: none; }
-        .acc-st { display: none; }
-        .acc-content { padding: 2px 8px 24px; }
-        .acc-syl { grid-template-columns: 1fr; }
-        .acc-cta .btn { width: 100%; }
+        .fan-wrap { padding: 30px 14px 26px; border-radius: 24px; }
+        .decks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .deck { width: 100%; padding: 18px 10px 14px; }
+        .fan-stage { flex-direction: column; align-items: center; gap: 14px; padding-top: 26px; min-height: 0; }
+        .fcard { width: min(320px, 92%); margin: 0; --rot: 0deg !important; --ty: 0px !important; }
         .lvl { padding-right: 50px; margin-bottom: 44px; }
         .lvl::before { right: 17px; top: 46px; bottom: -46px; }
         .lvl-title { font-size: 1.25rem; padding-top: 4px; }
@@ -1011,13 +1039,14 @@
                 <div class="on-grid" id="openNowGrid"></div>
             </div>
 
-            <!-- רשימת הקורסים המתרחבת -->
-            <div class="acc-wrap reveal">
+            <!-- חפיסות תחום + מניפת קלפים -->
+            <div class="fan-wrap reveal">
                 <div class="cat-head">
-                    <h3>כל הקורסים, במבט אחד</h3>
-                    <p>לחצו על שם קורס — וכל הפרטים והסילבוס נפתחים במקום.</p>
+                    <h3>מה מתאים לילד שלך?</h3>
+                    <p>לחצו על חפיסה — והקלפים שלה נפרשים. כל קלף נפתח לסילבוס המלא.</p>
                 </div>
-                <div class="acc" id="accList"></div>
+                <div class="decks" id="decks"></div>
+                <div class="fan-stage" id="fanStage"></div>
             </div>
         </div>
     </section>
@@ -1375,51 +1404,84 @@
         onGrid.appendChild(el);
     });
 
-    // ===== רשימת הקורסים המתרחבת =====
-    (function accordion(){
-        const list = document.getElementById('accList');
-        const items = COURSES.map((co, i) => {
-            const item = document.createElement('div');
-            item.className = 'acc-item';
-            const cta = ctaFor(co);
-            item.innerHTML = `<button class="acc-head" aria-expanded="false">
-                    <span class="acc-num">${String(i + 1).padStart(2, '0')}</span>
-                    <span class="acc-em" style="background:${co.c}">${co.em}</span>
-                    <span class="acc-name">${co.name}</span>
-                    <span class="acc-side">
-                        ${co.price ? `<span class="acc-price">${co.price}</span>` : ''}
-                        <span class="acc-dot ${co.status === 'open' ? 'open' : 'soon'}"></span>
-                        <span class="acc-st">${co.status === 'open' ? 'ההרשמה פתוחה' : 'בקרוב'}</span>
-                    </span>
-                    <span class="acc-x">+</span>
-                </button>
-                <div class="acc-body"><div class="acc-inner"><div class="acc-content">
-                    <p class="acc-tagline">${co.tag}</p>
-                    <div class="acc-chips">
-                        <span class="chip">גיל ${co.age}</span>
-                        <span class="chip">${co.count || '8 מפגשים'}</span>
-                        ${co.prereq ? `<span class="chip">${co.prereq}</span>` : ''}
-                    </div>
-                    <div class="mc-deliver" style="max-width:640px;">מסיימים עם: ${co.deliver}</div>
-                    <ul class="acc-syl">${co.sessions.map((sn, j) =>
-                        `<li><span class="n">${j + 1}</span><div><b>${sn[0]}</b><span>${sn[1]}</span></div></li>`).join('')}</ul>
-                    <div class="acc-cta">
-                        <a class="btn ${co.status === 'open' ? 'btn-ink' : 'btn-wa'}" href="${cta.href}"${cta.ext ? ' target="_blank" rel="noopener"' : ''}>${cta.label} <span class="arr">←</span></a>
-                    </div>
-                </div></div></div>`;
-            list.appendChild(item);
-            return item;
+    // ===== חפיסות תחום + מניפת קלפים =====
+    (function fan(){
+        const DECKS = [
+            { id: 'create', em: '🎨', label: 'ליצור',          c1: '#EC4899', c2: '#F97316', glow: 'rgba(236,72,153,.4)' },
+            { id: 'build',  em: '💻', label: 'לבנות ולתכנת',   c1: '#6366F1', c2: '#8B5CF6', glow: 'rgba(99,102,241,.42)' },
+            { id: 'biz',    em: '💼', label: 'עסקים וכסף',     c1: '#0D9488', c2: '#10B981', glow: 'rgba(13,148,136,.4)' },
+            { id: 'stage',  em: '🎤', label: 'במה והשפעה',     c1: '#F59E0B', c2: '#F43F5E', glow: 'rgba(245,158,11,.4)' }
+        ];
+        const decksEl = document.getElementById('decks'), stage = document.getElementById('fanStage');
+        const byCat = id => COURSES.map((co, i) => ({ co, i })).filter(x => (x.co.cat || []).includes(id));
+        const deckBtns = DECKS.map(d => {
+            const btn = document.createElement('button');
+            btn.className = 'deck';
+            btn.style.setProperty('--c1', d.c1);
+            btn.style.setProperty('--c2', d.c2);
+            btn.style.setProperty('--glow', d.glow);
+            btn.innerHTML = `<span class="deck-em">${d.em}</span><span class="deck-label">${d.label}</span><span class="deck-count">${byCat(d.id).length} קורסים</span>`;
+            btn.addEventListener('click', () => deal(d.id));
+            decksEl.appendChild(btn);
+            return btn;
         });
-        function toggle(i, forceOpen) {
-            const willOpen = forceOpen || !items[i].classList.contains('open');
-            items.forEach((it, j) => {
-                const on = willOpen && j === i;
-                it.classList.toggle('open', on);
-                it.querySelector('.acc-head').setAttribute('aria-expanded', on);
-            });
+        let current = '';
+        function deal(id) {
+            if (id === current) return;
+            current = id;
+            const d = DECKS.find(x => x.id === id);
+            deckBtns.forEach((b, j) => b.classList.toggle('on', DECKS[j].id === id));
+            stage.style.setProperty('--stage-glow', d.glow.replace(/\.\d+\)/, '.14)'));
+            // איסוף הקלפים הקיימים
+            [...stage.querySelectorAll('.fcard')].forEach(c => c.classList.add('away'));
+            setTimeout(() => {
+                stage.innerHTML = '';
+                const items = byCat(id), n = items.length;
+                const deckBox = deckBtns[DECKS.findIndex(x => x.id === id)].getBoundingClientRect();
+                const stageBox = stage.getBoundingClientRect();
+                const fromX = deckBox.left + deckBox.width / 2 - (stageBox.left + stageBox.width / 2);
+                items.forEach(({ co, i }, k) => {
+                    const mid = (n - 1) / 2;
+                    const rot = (k - mid) * 5;                       // זווית מניפה
+                    const ty = Math.abs(k - mid) * 16;               // קשת
+                    const el = document.createElement('button');
+                    el.className = 'fcard';
+                    el.style.setProperty('--rot', rot + 'deg');
+                    el.style.setProperty('--ty', ty + 'px');
+                    el.style.zIndex = k <= mid ? k + 1 : n - k;
+                    el.setAttribute('aria-label', 'סילבוס ' + co.name);
+                    el.innerHTML = `<div class="fc-top">
+                            <span class="fc-em" style="background:${co.c}">${co.em}</span>
+                            <span class="fc-dot ${co.status === 'open' ? 'open' : 'soon'}"></span>
+                        </div>
+                        <span class="fc-name">${co.name}</span>
+                        <p class="fc-tag">${co.tag}</p>
+                        <div class="fc-meta">
+                            <span class="chip">גיל ${co.age}</span>
+                            <span class="chip">${co.count || '8 מפגשים'}</span>
+                            <span class="chip ${STATUS[co.status][0]}">${co.status === 'open' ? 'פתוח' : 'בקרוב'}</span>
+                        </div>
+                        <div class="fc-foot">
+                            <span class="fc-price">${co.price || '<small>מחיר בקרוב</small>'}</span>
+                            <span class="fc-go">לסילבוס ←</span>
+                        </div>`;
+                    el.addEventListener('click', () => openCourse(i));
+                    // חלוקה: מתחילים מהחפיסה ועפים למקום במניפה
+                    el.style.transition = 'none';
+                    el.style.transform = `translate(${-fromX}px, -210px) rotate(${rot * 3}deg) scale(.45)`;
+                    el.style.opacity = '0';
+                    stage.appendChild(el);
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        el.style.transition = '';
+                        el.style.transitionDelay = (k * 70) + 'ms';
+                        el.style.transform = '';
+                        el.style.opacity = '1';
+                        setTimeout(() => el.style.transitionDelay = '', 700 + k * 70);
+                    }));
+                });
+            }, current ? 240 : 0);
         }
-        items.forEach((it, i) => it.querySelector('.acc-head').addEventListener('click', () => toggle(i)));
-        toggle(0, true); // הראשון פתוח — מדגים את הדפוס
+        deal('build'); // ברירת מחדל: שני הקורסים הפתוחים על הבמה
     })();
 
     const cm = document.getElementById('courseModal');
