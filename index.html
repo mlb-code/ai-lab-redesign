@@ -139,6 +139,19 @@
         padding: 13px 26px; border-radius: 50px; text-decoration: none;
         font-weight: 800; font-size: .95rem; transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
     }
+    /* חתימות אור זכוכית — כל הכפתורים */
+    .btn, .nav-cta, .ag-send, .agent-orb { position: relative; z-index: 0; }
+    .btn::after, .nav-cta::after, .ag-send::after, .agent-orb::after {
+        content: ""; position: absolute; inset: 0; border-radius: inherit;
+        z-index: -1; pointer-events: none;
+        background:
+            radial-gradient(44px 22px at 16% 0%, rgba(255,255,255,.3), transparent 70%),
+            linear-gradient(115deg, transparent 30%, rgba(255,255,255,.08) 44%, rgba(255,255,255,.2) 50%, rgba(255,255,255,.08) 56%, transparent 70%);
+        box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,.42),
+            inset 0 0 0 1px rgba(255,255,255,.14),
+            inset 0 -1px 0 rgba(0,0,0,.16);
+    }
     .btn-primary { background: linear-gradient(120deg, #6366F1, #8B5CF6); color: #fff; box-shadow: 0 12px 34px rgba(99,102,241,.35); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(99,102,241,.5); }
     .btn-ghost-dark { background: rgba(255,255,255,.06); color: var(--on-night); border: 1.5px solid rgba(255,255,255,.22); }
@@ -246,6 +259,19 @@
     .ask-go {
         flex-shrink: 0; font-size: .8rem; font-weight: 800; color: #9FE8F2;
         border: 1px solid rgba(77,214,232,.35); border-radius: 50px; padding: 5px 13px;
+    }
+    .ask-wrap.power .ask-bar { animation: askPower 1.5s ease; }
+    .ask-wrap.power::before { animation-duration: .9s; }
+    @keyframes askPower {
+        0% { transform: scale(1); box-shadow: inset 0 1.5px 0 rgba(255,255,255,.28); }
+        30% { transform: scale(1.045); box-shadow: inset 0 1.5px 0 rgba(255,255,255,.4), 0 0 44px rgba(99,102,241,.65), 0 0 90px rgba(77,214,232,.35); }
+        100% { transform: scale(1); box-shadow: inset 0 1.5px 0 rgba(255,255,255,.28); }
+    }
+    .ask-wrap.knock .ask-bar { animation: askKnock 1.4s ease; }
+    @keyframes askKnock {
+        0%, 100% { box-shadow: inset 0 1.5px 0 rgba(255,255,255,.28); }
+        18%, 55% { box-shadow: inset 0 1.5px 0 rgba(255,255,255,.36), 0 0 30px rgba(77,214,232,.5); }
+        36%, 75% { box-shadow: inset 0 1.5px 0 rgba(255,255,255,.28); }
     }
     .agent-orb {
         position: fixed; bottom: 26px; left: 26px; z-index: 95;
@@ -1103,6 +1129,169 @@
     .mc-cta .btn { flex: 1; padding: 13px 18px; font-size: .95rem; }
     body.modal-open { overflow: hidden; }
 
+    /* ===== מרכז הבחירה — פאנלי זכוכית ===== */
+    .hub { padding: 30px 0 90px; }
+    .hub .container { display: flex; flex-direction: column; gap: 0; max-width: none; padding: 0 16px; }
+    .hub-item { position: relative; }
+    .hub-item + .hub-item { margin-top: -36px; }
+    .hub-item:nth-of-type(1) { z-index: 16; }
+    .hub-item:nth-of-type(2) { z-index: 15; }
+    .hub-item:nth-of-type(3) { z-index: 14; }
+    .hub-item:nth-of-type(4) { z-index: 13; }
+    .hub-item:nth-of-type(5) { z-index: 12; }
+    .hub-item:nth-of-type(6) { z-index: 11; }
+    .hub-item:nth-of-type(7) { z-index: 10; }
+    .hub-item.open { z-index: 20; }
+    .hub-head-line { text-align: center; margin-bottom: 18px; }
+    .hub-head-line h2 { font-family: var(--font-display); font-weight: normal; font-size: clamp(1.7rem, 3.2vw, 2.35rem); color: #fff; }
+    .hub-head-line p { color: var(--on-night-soft); font-size: 1rem; margin-top: 8px; }
+    .hub-item {
+        border-radius: 26px; overflow: hidden;
+        --gt: 200,210,250;
+        background:
+            linear-gradient(150deg, rgba(var(--gt), .24), transparent 48%, rgba(var(--gt), .13)),
+            linear-gradient(163deg, rgba(214,220,248,.13), rgba(164,172,215,.08) 48%, rgba(140,148,198,.11));
+        backdrop-filter: blur(38px) saturate(1.35) brightness(1.24);
+        -webkit-backdrop-filter: blur(38px) saturate(1.35) brightness(1.24);
+        border: 1px solid rgba(255,255,255,.38);
+        box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,.6),
+            inset 0 -1px 0 rgba(0,0,0,.22),
+            inset 0 0 0 1px rgba(255,255,255,.13),
+            inset 0 0 60px rgba(var(--gt), .18),
+            0 16px 22px -12px rgba(0,0,0,.5),
+            0 26px 52px -16px rgba(var(--gt), .3),
+            0 34px 80px rgba(0,0,0,.26);
+        transition: border-color .25s, box-shadow .25s;
+    }
+    .hub-i1 { --gt: 125,240,192; }   /* פרויקטים — מנטה (קוד) */
+    .hub-i2 { --gt: 245,200,66; }    /* סרטונים — זהב הוליוודי */
+    .hub-i3 { --gt: 139,141,255; }   /* קורסים — אינדיגו */
+    .hub-i4 { --gt: 77,214,232; }    /* אזור אישי — טורקיז */
+    .hub-i5 { --gt: 255,169,77; }    /* קהילה — כתום חם */
+    .hub-i6 { --gt: 199,208,240; }   /* שאלות — כסוף */
+    .hub-item::before {
+        content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; z-index: 0;
+        background:
+            radial-gradient(150px 70px at 14% 0%, rgba(255,255,255,.17), transparent 70%),
+            radial-gradient(110px 60px at 86% 100%, rgba(255,255,255,.08), transparent 70%),
+            linear-gradient(115deg, transparent 36%, rgba(255,255,255,.045) 44%, rgba(255,255,255,.11) 50%, rgba(255,255,255,.045) 56%, transparent 64%),
+            linear-gradient(115deg, transparent 64%, rgba(255,255,255,.035) 70%, transparent 77%);
+    }
+    .hub-item::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 36px;
+        background: linear-gradient(to top, rgba(255,255,255,.07), transparent);
+        pointer-events: none;
+    }
+    .hub-item:hover { border-color: rgba(var(--gt), .55); }
+    .hub-item.open {
+        border-color: rgba(var(--gt), .65);
+        box-shadow: inset 0 1.5px 0 rgba(255,255,255,.36), inset 0 0 60px rgba(var(--gt), .14), 0 24px 70px rgba(0,0,0,.4), 0 0 70px rgba(var(--gt), .3);
+    }
+    .hub-head {
+        position: relative; z-index: 1;
+        width: 100%; background: none; border: 0; cursor: pointer;
+        display: flex; align-items: center; gap: 22px;
+        padding: 48px 40px 38px; text-align: right; color: #fff;
+        font-family: var(--font-body);
+    }
+    .hub-ic {
+        width: 58px; height: 58px; border-radius: 17px; flex-shrink: 0; padding: 14px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(var(--gt), .2);
+        border: 1px solid rgba(var(--gt), .5);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+        transition: transform .3s;
+    }
+    .hub-item.open .hub-ic, .hub-head:hover .hub-ic { transform: scale(1.08) rotate(-4deg); }
+    .hub-tt { flex: 1; min-width: 0; }
+    .hub-tt b { display: block; font-family: var(--font-display); font-weight: normal; font-size: clamp(1.4rem, 2.7vw, 2.05rem); line-height: 1.25; }
+    .hub-tt span { color: rgba(233,237,255,.72); font-size: 1rem; }
+    .hub-x {
+        width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.22);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+        color: #fff; font-size: 1.25rem; font-weight: 600;
+        transition: transform .4s, background .25s;
+    }
+    .hub-item.open .hub-x { transform: rotate(45deg); background: rgba(77,214,232,.25); }
+    .hub-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .55s cubic-bezier(.4,0,.2,1); }
+    .hub-item.open .hub-body { grid-template-rows: 1fr; }
+    .hub-inner { overflow: hidden; min-height: 0; }
+    .hub-inner .sheet { margin: 4px 12px 22px; }
+    .hub-inner section { padding: 60px 0; }
+    .hub-inner .band-dark { border-radius: 0; }
+
+    /* פנים הלוחות — עולם כהה אחיד */
+    .hub-inner .sheet {
+        background-color: rgba(15,18,46,.62);
+        background-image: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        border: 1px solid rgba(255,255,255,.12);
+        box-shadow: inset 0 1.5px 0 rgba(255,255,255,.14);
+    }
+    .hub-inner .sheet .sec-head h2, .hub-inner .cat-head h3, .hub-inner .on-head h3 { color: #fff; }
+    .hub-inner .sheet .sec-head p, .hub-inner .cat-head p { color: var(--on-night-soft); }
+    .hub-inner .sheet .sec-head p b { color: #fff; }
+    .hub-inner .sheet .eyebrow, .hub-inner .on-pill {
+        background: rgba(139,141,255,.14); border-color: rgba(139,141,255,.32); color: var(--accent-bright);
+    }
+    .hub-inner .on-pill { color: #86EFAC; background: rgba(31,175,87,.14); border-color: rgba(74,222,128,.35); }
+    .hub-inner .fan-wrap {
+        background: rgba(255,255,255,.045);
+        background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+        background-size: 26px 26px;
+        border: 1px solid rgba(255,255,255,.12);
+        box-shadow: inset 0 1.5px 0 rgba(255,255,255,.12);
+    }
+    .hub-inner .skills-marquee .sticker { border-color: rgba(255,255,255,.3); }
+
+    /* קירות-נושא חיים בתוך הלוחות */
+    .hub-inner .sheet, .hub-inner { position: relative; }
+    .hub-inner .sheet > section, .hub-inner .sheet > div:not(.theme-wall):not(.sheets-wall),
+    .hub-inner > section { position: relative; z-index: 1; }
+    .theme-wall { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .matrix-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: .5; }
+    .sheets-wall {
+        position: absolute; inset: 0; z-index: 0; pointer-events: none;
+        background-image:
+            linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.09) 1px, transparent 1px);
+        background-size: 132px 38px;
+    }
+    .sw-sel {
+        position: absolute; border-radius: 3px;
+        border: 1.5px solid var(--sc);
+        background: color-mix(in srgb, var(--sc) 13%, transparent);
+        box-shadow: 0 0 20px color-mix(in srgb, var(--sc) 38%, transparent);
+        animation: swSel 3s ease-in-out forwards;
+    }
+    @keyframes swSel {
+        0% { opacity: 0; transform: scale(.92); }
+        18% { opacity: 1; transform: scale(1); }
+        68% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+    .tw-tok {
+        position: absolute; font-family: 'IBM Plex Mono', monospace;
+        color: rgba(159,166,255,.11); font-weight: 700; user-select: none;
+        white-space: nowrap; line-height: 1;
+    }
+    .tw-tok.ignite { animation: twIgnite 3.4s ease-in-out forwards; }
+    @keyframes twIgnite {
+        0% { color: rgba(159,166,255,.11); text-shadow: none; }
+        28% { color: var(--tc); text-shadow: 0 0 18px var(--tc), 0 0 46px var(--tc); }
+        60% { color: var(--tc); text-shadow: 0 0 10px var(--tc); }
+        100% { color: rgba(159,166,255,.11); text-shadow: none; }
+    }
+
+    /* CTA בפוטר */
+    .foot-cta { max-width: 1200px; margin: 0 auto; padding: 104px 24px 156px; text-align: center; }
+    .foot-cta h2 { font-family: var(--font-display); font-weight: normal; font-size: clamp(1.9rem, 4vw, 2.8rem); color: #fff; margin-bottom: 12px; }
+    .foot-cta p { color: var(--on-night-soft); font-size: 1.08rem; margin-bottom: 36px; }
+    .foot-cta .hero-actions { justify-content: center; margin-bottom: 0; }
+
     /* ===== קיר פריימים — רקע סקשן הסרטונים ===== */
     #videos { position: relative; overflow: hidden; background: radial-gradient(120% 90% at 50% 0%, #151332 0%, #0B0A1C 55%, #080714 100%); }
     .film-wall {
@@ -1304,7 +1493,7 @@
     .final .hero-actions { justify-content: center; }
 
     /* ===== פוטר מקצועי ===== */
-    footer { color: var(--on-night); padding: 80px 0 0; position: relative; }
+    footer { color: var(--on-night); padding: 0; position: relative; }
     footer::before {
         content: ""; position: absolute; top: 0; right: 10%; left: 10%; height: 1px;
         background: linear-gradient(90deg, transparent, rgba(139,141,255,.45), transparent);
@@ -1312,7 +1501,8 @@
     .btn .arr { transition: transform .22s; }
     .btn:hover .arr { transform: translateX(-4px); }
     .foot-grid {
-        max-width: 1200px; margin: 0 auto; padding: 0 24px 56px;
+        max-width: 1200px; margin: 0 auto; padding: 64px 24px 56px;
+        border-top: 1px solid rgba(255,255,255,.09);
         display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.1fr; gap: 44px;
     }
     .foot-brand .logo { font-size: 1.7rem; }
@@ -1523,6 +1713,17 @@
 </header>
 
 <main>
+<!-- ============ מרכז הבחירה ============ -->
+<section class="hub" id="hub">
+    <div class="container">
+        <div class="hub-head-line reveal"><h2>לאן ניקח אתכם?</h2><p>בוחרים נושא — והוא נפתח כאן. בלי ללכת לאיבוד.</p></div>
+    <div class="hub-item hub-i1">
+        <button class="hub-head" aria-expanded="false">
+            <span class="hub-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9FE8F2" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M3 9h18"/><circle cx="6.4" cy="6.8" r=".9" fill="#9FE8F2" stroke="none"/><circle cx="9.2" cy="6.8" r=".9" fill="#9FE8F2" stroke="none"/></svg></span>
+            <span class="hub-tt"><b>הפרויקטים של התלמידים</b><span>עשרות אתרים חיים שילדים בנו — והסיפורים שמאחוריהם</span></span>
+            <span class="hub-x">+</span>
+        </button>
+        <div class="hub-body"><div class="hub-inner">
 <!-- ============ SHEET 1: קיר + מסלולים + בונים ============ -->
 <div class="sheet">
     <section id="wall" style="padding-bottom:60px;">
@@ -1601,6 +1802,16 @@
     </section>
 </div>
 
+
+        </div></div>
+    </div>
+    <div class="hub-item hub-i2">
+        <button class="hub-head" aria-expanded="false">
+            <span class="hub-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9FE8F2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3.5"/><path d="M10.2 9.4v5.2l4.6-2.6z" fill="#9FE8F2" stroke="none"/></svg></span>
+            <span class="hub-tt"><b>סרטוני תלמידים</b><span>מה יוצרים אצלנו בסדנת סרטוני ה-AI</span></span>
+            <span class="hub-x">+</span>
+        </button>
+        <div class="hub-body"><div class="hub-inner">
 <!-- ============ רצועה כהה: סרטוני תלמידים ============ -->
 <section class="band-dark" id="videos">
     <div class="film-wall" aria-hidden="true" id="filmWall"></div>
@@ -1614,6 +1825,16 @@
     </div>
 </section>
 
+
+        </div></div>
+    </div>
+    <div class="hub-item hub-i3">
+        <button class="hub-head" aria-expanded="false">
+            <span class="hub-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9FE8F2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21 8.6 12 13.2 3 8.6z"/><path d="M6 11v4.4c0 1.5 2.7 3.1 6 3.1s6-1.6 6-3.1V11"/></svg></span>
+            <span class="hub-tt"><b>הקורסים והמחירים</b><span>מפת הקורסים המלאה — מחירים גלויים וסילבוסים</span></span>
+            <span class="hub-x">+</span>
+        </button>
+        <div class="hub-body"><div class="hub-inner">
 <!-- ============ SHEET: מיומנויות + מפת הקורסים ============ -->
 <div class="sheet">
     <!-- מיומנויות העתיד — קיר סטיקרים נע -->
@@ -1681,6 +1902,16 @@
 </div>
 
 
+
+        </div></div>
+    </div>
+    <div class="hub-item hub-i4">
+        <button class="hub-head" aria-expanded="false">
+            <span class="hub-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9FE8F2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="12" r="3.6"/><path d="M12.1 12H21M17.6 12v3.2M14.9 12v2.2"/></svg></span>
+            <span class="hub-tt"><b>האזור האישי ואיך זה עובד</b><span>מה כל תלמיד מקבל, ואיך נראה התהליך</span></span>
+            <span class="hub-x">+</span>
+        </button>
+        <div class="hub-body"><div class="hub-inner">
 <!-- ============ רצועה כהה: האזור האישי ============ -->
 <section class="band-dark" id="portal" style="padding-bottom:34px;">
     <div class="container">
@@ -1768,7 +1999,16 @@
     </div>
 </section>
 
-<!-- ============ SHEET 2: קהילה + בלוג + שאלות + CTA ============ -->
+
+        </div></div>
+    </div>
+    <div class="hub-item hub-i5">
+        <button class="hub-head" aria-expanded="false">
+            <span class="hub-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9FE8F2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5A3.5 3.5 0 0 1 7.5 4h9A3.5 3.5 0 0 1 20 7.5v5a3.5 3.5 0 0 1-3.5 3.5H10l-4.4 3.4V16A3.5 3.5 0 0 1 4 12.5z"/><path d="M8.6 10.2h6.8M8.6 12.9h4.2"/></svg></span>
+            <span class="hub-tt"><b>קהילה ובלוג</b><span>הקהילות שלנו ומדריכים להורים</span></span>
+            <span class="hub-x">+</span>
+        </button>
+        <div class="hub-body"><div class="hub-inner">
 <div class="sheet">
     <section id="community" style="padding-bottom:0;">
         <div class="container">
@@ -1834,6 +2074,17 @@
         </div>
     </section>
 
+</div>
+        </div></div>
+    </div>
+    <div class="hub-item hub-i6">
+        <button class="hub-head" aria-expanded="false">
+            <span class="hub-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9FE8F2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 9.2a2.9 2.9 0 1 1 4 2.7c-.9.4-1.2 1-1.2 1.9v.5"/><circle cx="12" cy="17.6" r=".4" fill="#9FE8F2"/><circle cx="12" cy="12" r="9.2"/></svg></span>
+            <span class="hub-tt"><b>שאלות נפוצות</b><span>כל מה שהורים שואלים אותנו</span></span>
+            <span class="hub-x">+</span>
+        </button>
+        <div class="hub-body"><div class="hub-inner">
+<div class="sheet">
     <section id="faq" style="padding-top:40px;">
         <div class="container">
             <div class="sec-head reveal">
@@ -1864,18 +2115,11 @@
         </div>
     </section>
 
-    <section class="final">
-        <div class="container reveal">
-            <h2>הילד שלכם הבא בתור?</h2>
-            <p>שיחה קצרה בוואטסאפ — ונמצא יחד את המסלול המתאים.</p>
-            <div class="hero-actions">
-                <a href="https://wa.me/972546500795?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%99%D7%96%D7%9E%D7%95%D7%AA%20%D7%95-AI" target="_blank" rel="noopener" class="btn btn-wa">דברו איתנו בוואטסאפ</a>
-                <a href="https://ai-lab.co.il/register-kids" class="btn btn-ink">להרשמה <span class="arr">←</span></a>
-            </div>
-        </div>
-    </section>
 </div>
-</main>
+        </div></div>
+    </div>
+    </div>
+</section>
 
 <!-- כפתור סוכן צף -->
 <button class="agent-orb" id="agentOrb" aria-label="דברו עם הסוכן של AI Lab">
@@ -1903,6 +2147,17 @@
 
 <!-- ============ פוטר ============ -->
 <footer>
+<div class="foot-cta">
+        <div class="container reveal">
+            <h2>הילד שלכם הבא בתור?</h2>
+            <p>שיחה קצרה בוואטסאפ — ונמצא יחד את המסלול המתאים.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/972546500795?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%99%D7%96%D7%9E%D7%95%D7%AA%20%D7%95-AI" target="_blank" rel="noopener" class="btn btn-wa">דברו איתנו בוואטסאפ</a>
+                <a href="https://ai-lab.co.il/register-kids" class="btn btn-primary">להרשמה <span class="arr">←</span></a>
+            </div>
+        </div>
+</div>
+
     <div class="foot-grid">
         <div class="foot-brand">
             <a href="#" class="logo">AI<b>&nbsp;Lab</b></a>
@@ -2318,10 +2573,11 @@
             'יש דוגמאות לאתרים של ילדים?'
         ];
         const askPh = document.getElementById('askPh');
-        let aq = 0, achar = 0, aphase = 'type', apause = 0;
+        let aq = 0, achar = 0, aphase = 'type', apause = 0, askOverride = null;
         (function askTick(){
             if (!askPh) return;
             if (wrap.classList.contains('open')) { setTimeout(askTick, 600); return; }
+            if (askOverride) { askPh.textContent = askOverride; setTimeout(askTick, 300); return; }
             const q = ASK_QS[aq];
             if (aphase === 'type') {
                 achar++; askPh.textContent = q.slice(0, achar);
@@ -2336,6 +2592,38 @@
                 setTimeout(askTick, 18);
             }
         })();
+
+        // --- נוכחות: פאוור-אפ, מגנטיות, דפיקה ---
+        const askWrap = askBar.closest('.ask-wrap');
+        let interacted = false;
+        document.addEventListener('subDone', () => {
+            if (!askWrap) return;
+            askWrap.classList.add('power');
+            setTimeout(() => askWrap.classList.remove('power'), 1600);
+            // דפיקה חד-פעמית אם אין אינטראקציה
+            setTimeout(() => {
+                if (interacted || wrap.classList.contains('open') || document.hidden) return;
+                askWrap.classList.add('knock');
+                askOverride = 'יש לכם שאלה? אני כאן 👋';
+                setTimeout(() => { askWrap.classList.remove('knock'); askOverride = null; }, 2600);
+            }, 7000);
+        }, { once: true });
+        ['pointerdown', 'keydown'].forEach(ev => addEventListener(ev, () => { interacted = true; }, { once: true, capture: true }));
+        // מגנטיות: המסגרת נדלקת כשהעכבר מתקרב
+        const heroEl0 = document.querySelector('.hero');
+        let proxRaf = null;
+        heroEl0.addEventListener('mousemove', e => {
+            if (proxRaf || !askBar) return;
+            proxRaf = requestAnimationFrame(() => {
+                proxRaf = null;
+                const r = askBar.getBoundingClientRect();
+                const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+                const p = Math.max(0, 1 - d / 300);
+                askBar.style.borderColor = `rgba(120,220,240,${.24 + .5 * p})`;
+                askBar.style.boxShadow = `inset 0 1.5px 0 rgba(255,255,255,${.28 + .2 * p})` + (p > .05 ? `, 0 0 ${34 * p}px rgba(77,214,232,${.45 * p})` : '');
+            });
+        });
+        heroEl0.addEventListener('mouseleave', () => { if (askBar) { askBar.style.borderColor = ''; askBar.style.boxShadow = ''; } });
 
         // --- פתיחה/סגירה ---
         let opened = false;
@@ -2395,7 +2683,7 @@
                 el.innerHTML = a.label;
                 if (a.t === 'link') { el.href = a.href; if (!a.href.startsWith('#')) { el.target = '_blank'; el.rel = 'noopener'; } }
                 if (a.t === 'wa') { el.href = WA(a.msg); el.target = '_blank'; el.rel = 'noopener'; }
-                if (a.t === 'scroll') el.addEventListener('click', () => { closeAgent(); document.querySelector(a.sel).scrollIntoView({ behavior: 'smooth' }); });
+                if (a.t === 'scroll') el.addEventListener('click', () => { closeAgent(); if (window.openHubFor) window.openHubFor(a.sel); setTimeout(() => document.querySelector(a.sel).scrollIntoView({ behavior: 'smooth' }), 150); });
                 if (a.t === 'course') el.addEventListener('click', () => { closeAgent(); openCourse(a.i); });
                 if (a.t === 'link' && a.href.startsWith('#')) el.addEventListener('click', () => closeAgent());
                 row.appendChild(el);
@@ -2531,6 +2819,7 @@
         function step() {
             if (ti >= tokens.length) {
                 setTimeout(() => cursor.remove(), 2200);
+                document.dispatchEvent(new Event('subDone'));
                 return;
             }
             const tok = tokens[ti];
@@ -2717,6 +3006,85 @@
                 ctx.beginPath(); ctx.arc(tip.x, tip.y, 9, 0, 6.283); ctx.fill();
             }
         }
+        // --- זרמי היצירה: מהטלפונים אל שורת ה-AI ---
+        const askEl = document.getElementById('askBar');
+        const mosEl = document.getElementById('pmosaic');
+        let paths = [];
+        function buildStreams() {
+            if (!askEl || !mosEl) return;
+            const hr = hero.getBoundingClientRect();
+            const ar = askEl.getBoundingClientRect();
+            const mr = mosEl.getBoundingClientRect();
+            if (ar.width === 0 || mr.width === 0) return;
+            const ax = ar.left - hr.left, ay = ar.top - hr.top + ar.height / 2;
+            const ex = mr.right - hr.left - 14;
+            paths = [0.22, 0.5, 0.78].map((f, i) => {
+                const sy = mr.top - hr.top + mr.height * f;
+                const p0 = { x: ex, y: sy };
+                const p3 = { x: ax + 6, y: ay + (i - 1) * 9 };
+                const midx = (p0.x + p3.x) / 2;
+                return {
+                    p0,
+                    p1: { x: midx + (i - 1) * 40, y: sy + (ay - sy) * .18 },
+                    p2: { x: midx - (i - 1) * 30, y: ay + (sy - ay) * .14 },
+                    p3,
+                    pulses: Array.from({ length: 2 }, (_, k) => ({ t: (k * .5 + i * .17) % 1, sp: .0016 + i * .0004, g: (i + k) % 3 }))
+                };
+            });
+        }
+        const GLY = ['0', '1', '{ }'];
+        const bez = (p, t) => {
+            const u = 1 - t;
+            return {
+                x: u*u*u*p.p0.x + 3*u*u*t*p.p1.x + 3*u*t*t*p.p2.x + t*t*t*p.p3.x,
+                y: u*u*u*p.p0.y + 3*u*u*t*p.p1.y + 3*u*t*t*p.p2.y + t*t*t*p.p3.y
+            };
+        };
+        function drawStreams() {
+            for (const pth of paths) {
+                // המסלול העדין
+                ctx.beginPath();
+                ctx.moveTo(pth.p0.x, pth.p0.y);
+                ctx.bezierCurveTo(pth.p1.x, pth.p1.y, pth.p2.x, pth.p2.y, pth.p3.x, pth.p3.y);
+                ctx.strokeStyle = 'rgba(139,141,255,.07)';
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+                // פולסים נעים
+                for (const pu of pth.pulses) {
+                    pu.t += pu.sp;
+                    if (pu.t > 1) { pu.t = 0; pu.g = (pu.g + 1) % 3; }
+                    const pt = bez(pth, pu.t);
+                    const p2 = bez(pth, Math.min(1, pu.t + .012));
+                    const ang = Math.atan2(p2.y - pt.y, p2.x - pt.x);
+                    const fade = Math.min(1, pu.t * 5, (1 - pu.t) * 5);
+                    // רסיס זכוכית קטן שנע לאורך הזרם
+                    const SHAPES = [[13, 9, 3], [9, 13, 3], [11, 11, 4]];
+                    const sh = SHAPES[pu.g];
+                    ctx.save();
+                    ctx.translate(pt.x, pt.y);
+                    ctx.rotate(ang + (pu.g - 1) * .3);
+                    ctx.beginPath();
+                    ctx.roundRect(-sh[0] / 2, -sh[1] / 2, sh[0], sh[1], sh[2]);
+                    ctx.fillStyle = `rgba(205,220,255,${.13 * fade})`;
+                    ctx.fill();
+                    ctx.strokeStyle = `rgba(255,255,255,${.55 * fade})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                    // ברק ספקולרי בקצה העליון
+                    ctx.beginPath();
+                    ctx.moveTo(-sh[0] / 2 + 2, -sh[1] / 2 + 1.5);
+                    ctx.lineTo(sh[0] / 2 - 2, -sh[1] / 2 + 1.5);
+                    ctx.strokeStyle = `rgba(255,255,255,${.4 * fade})`;
+                    ctx.lineWidth = .8;
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }
+        setTimeout(buildStreams, 900);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(buildStreams, 200));
+        addEventListener('resize', () => setTimeout(buildStreams, 100));
+
         // --- לולאה ---
         let running = true, t = 0;
         function frame() {
@@ -2747,6 +3115,7 @@
             nextComet -= 16;
             if (nextComet <= 0) { spawnComet(t); nextComet = 7000 + 2500 * Math.abs(Math.sin(t * 1.31)); }
             drawComets();
+            drawStreams();
             drawInk(now);
             requestAnimationFrame(frame);
         }
@@ -2855,6 +3224,181 @@
         go.innerHTML = 'לצפייה באתר <span class="arr">←</span>';
         a.querySelector('.feat-body').appendChild(go);
     });
+
+    // ===== גשם מטריקס עברי — לוח הפרויקטים =====
+    (function matrixRain(){
+        const item = document.querySelector('.hub-i1');
+        if (!item) return;
+        const host = item.querySelector('.hub-inner > .sheet') || item.querySelector('.hub-inner');
+        const cv = document.createElement('canvas');
+        cv.className = 'matrix-canvas';
+        host.insertBefore(cv, host.firstChild);
+        const ctx = cv.getContext('2d');
+        const CHARS = '01אבגדהוזחטיכלמנסעפצקרשת<>{}=+;#';
+        let cols = [], W = 0, H = 0, running = false, raf = null, frame = 0;
+        function size() {
+            const r = host.getBoundingClientRect();
+            if (r.width < 10) return;
+            const dpr = Math.min(devicePixelRatio || 1, 1.5);
+            W = r.width; H = r.height;
+            cv.width = W * dpr; cv.height = H * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            const n = Math.floor(W / 22);
+            cols = Array.from({ length: n }, (_, i) => ({
+                x: i * 22 + 6,
+                y: -((i * 397) % 900),
+                sp: 2.2 + ((i * 131) % 100) / 42
+            }));
+            ctx.fillStyle = 'rgba(13,16,42,1)';
+            ctx.fillRect(0, 0, W, H);
+        }
+        function tick() {
+            if (!running) { raf = null; return; }
+            frame++;
+            if (frame % 3 === 0) {   // ~20fps — רגוע לעיניים
+                ctx.fillStyle = 'rgba(13,16,42,.09)';
+                ctx.fillRect(0, 0, W, H);
+                ctx.font = '15px "IBM Plex Mono", monospace';
+                for (const c of cols) {
+                    const ch = CHARS[(Math.random() * CHARS.length) | 0];
+                    ctx.fillStyle = 'rgba(210,255,235,.8)';
+                    ctx.fillText(ch, c.x, c.y);
+                    const ch2 = CHARS[(Math.random() * CHARS.length) | 0];
+                    ctx.fillStyle = 'rgba(125,240,192,.55)';
+                    ctx.fillText(ch2, c.x, c.y - 17);
+                    c.y += c.sp * 1.7;
+                    if (c.y > H + 60) c.y = -20 - (Math.random() * 300);
+                }
+            }
+            raf = requestAnimationFrame(tick);
+        }
+        function update() {
+            const open = item.classList.contains('open');
+            const r = item.getBoundingClientRect();
+            const vis = r.bottom > 0 && r.top < innerHeight;
+            const want = open && vis && !document.hidden;
+            if (want && !running) { running = true; if (!cols.length || Math.abs(host.clientWidth - W) > 4) size(); if (!raf) tick(); }
+            else if (!want) running = false;
+        }
+        setInterval(update, 400);
+        addEventListener('resize', () => { if (running) size(); });
+    })();
+
+    // ===== גיליון חי — לוח הקורסים =====
+    (function sheetsWall(){
+        const item = document.querySelector('.hub-i3');
+        if (!item) return;
+        const host = item.querySelector('.hub-inner > .sheet') || item.querySelector('.hub-inner');
+        const wall = document.createElement('div');
+        wall.className = 'sheets-wall';
+        host.insertBefore(wall, host.firstChild);
+        const COLORS = ['#34D399', '#8B8DFF', '#4DD6E8', '#F5C842'];
+        setInterval(() => {
+            if (document.hidden || !item.classList.contains('open')) return;
+            const r = item.getBoundingClientRect();
+            if (r.bottom < 0 || r.top > innerHeight) return;
+            if (wall.querySelectorAll('.sw-sel').length >= 4) return;
+            const wr = wall.getBoundingClientRect();
+            const cols = Math.floor(wr.width / 132), rows = Math.floor(wr.height / 38);
+            if (cols < 2 || rows < 2) return;
+            const sel = document.createElement('div');
+            sel.className = 'sw-sel';
+            sel.style.setProperty('--sc', COLORS[(Math.random() * COLORS.length) | 0]);
+            const span = Math.random() < .3 ? 2 : 1;
+            sel.style.right = ((Math.random() * (cols - span)) | 0) * 132 + 'px';
+            sel.style.top = ((Math.random() * rows) | 0) * 38 + 'px';
+            sel.style.width = (132 * span - 1) + 'px';
+            sel.style.height = '37px';
+            wall.appendChild(sel);
+            sel.addEventListener('animationend', () => sel.remove(), { once: true });
+        }, 850);
+    })();
+
+    // ===== קירות-נושא חיים בלוחות =====
+    (function themeWalls(){
+        const THEMES = [
+            { sel: '.hub-i4', tc: '#4DD6E8', toks: ['✓', '▸', '◇', '⌘', '24/7'] },
+            { sel: '.hub-i5', tc: '#FFA94D', toks: ['@', '#', '&', '!', ':)'] },
+            { sel: '.hub-i6', tc: '#F5C842', toks: ['?', '؟', '?', '!'] }
+        ];
+        const walls = [];
+        THEMES.forEach(t => {
+            const item = document.querySelector(t.sel);
+            if (!item) return;
+            const inner = item.querySelector('.hub-inner');
+            const host = inner.querySelector(':scope > .sheet') || inner;
+            const wall = document.createElement('div');
+            wall.className = 'theme-wall';
+            wall.style.setProperty('--tc', t.tc);
+            const toks = [];
+            for (let i = 0; i < 36; i++) {
+                const sp = document.createElement('span');
+                sp.className = 'tw-tok';
+                sp.textContent = t.toks[i % t.toks.length];
+                const hx = (i * 2654435761) % 991;
+                const hy = (i * 1597334677) % 983;
+                sp.style.right = (3 + hx / 991 * 92) + '%';
+                sp.style.top = (2 + hy / 983 * 94) + '%';
+                sp.style.fontSize = (13 + (i * 7) % 15) + 'px';
+                sp.style.transform = `rotate(${((i * 13) % 25) - 12}deg)`;
+                wall.appendChild(sp);
+                toks.push(sp);
+            }
+            host.insertBefore(wall, host.firstChild);
+            walls.push({ item, toks });
+        });
+        setInterval(() => {
+            if (document.hidden) return;
+            walls.forEach(w => {
+                if (!w.item.classList.contains('open')) return;
+                const r = w.item.getBoundingClientRect();
+                if (r.bottom < 0 || r.top > innerHeight) return;
+                const t = w.toks[Math.floor(Math.random() * w.toks.length)];
+                if (t.classList.contains('ignite')) return;
+                t.classList.add('ignite');
+                t.addEventListener('animationend', () => t.classList.remove('ignite'), { once: true });
+            });
+        }, 700);
+    })();
+
+    // ===== מרכז הבחירה =====
+    (function hub(){
+        const items = [...document.querySelectorAll('.hub-item')];
+        if (!items.length) return;
+        function setOpen(i) {
+            items.forEach((it, j) => {
+                const on = j === i;
+                it.classList.toggle('open', on);
+                it.querySelector('.hub-head').setAttribute('aria-expanded', on);
+            });
+            setTimeout(() => dispatchEvent(new Event('resize')), 380);   // רענון מדידות (מניפה, זרמים)
+        }
+        items.forEach((it, i) => it.querySelector('.hub-head').addEventListener('click', () => {
+            if (it.classList.contains('open')) { it.classList.remove('open'); it.querySelector('.hub-head').setAttribute('aria-expanded', false); }
+            else { setOpen(i); setTimeout(() => it.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120); }
+        }));
+        window.openHubFor = sel => {
+            const t = document.querySelector(sel);
+            const it = t && t.closest('.hub-item');
+            if (!it) return false;
+            setOpen(items.indexOf(it));
+            return true;
+        };
+        // עוגנים (תפריט, פוטר, מודאלים) פותחים את הפאנל הנכון
+        document.addEventListener('click', e => {
+            const a = e.target.closest('a[href^="#"]');
+            if (!a) return;
+            const sel = a.getAttribute('href');
+            if (sel.length < 2) return;
+            const t = document.querySelector(sel);
+            const it = t && t.closest('.hub-item');
+            if (it) {
+                e.preventDefault();
+                setOpen(items.indexOf(it));
+                setTimeout(() => t.scrollIntoView({ behavior: 'smooth', block: 'start' }), 140);
+            }
+        });
+    })();
 
     // השהיית אנימציות marquee כשהסקשן מחוץ למסך
     const marqIO = new IntersectionObserver(es => es.forEach(e => {
