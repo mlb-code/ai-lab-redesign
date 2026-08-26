@@ -1425,16 +1425,35 @@
             decksEl.appendChild(btn);
             return btn;
         });
-        let current = '';
+        let current = '', token = 0;
         function deal(id) {
             if (id === current) return;
+            const myToken = ++token;
+            const prevIdx = DECKS.findIndex(x => x.id === current);
             current = id;
             const d = DECKS.find(x => x.id === id);
             deckBtns.forEach((b, j) => b.classList.toggle('on', DECKS[j].id === id));
             stage.style.setProperty('--stage-glow', d.glow.replace(/\.\d+\)/, '.14)'));
-            // איסוף הקלפים הקיימים
-            [...stage.querySelectorAll('.fcard')].forEach(c => c.classList.add('away'));
+
+            // איסוף הקלפים בחזרה אל החפיסה הקודמת, אחד-אחד
+            const olds = [...stage.querySelectorAll('.fcard')];
+            let wait = 0;
+            if (olds.length && prevIdx > -1) {
+                const stageBox = stage.getBoundingClientRect();
+                const pb = deckBtns[prevIdx].getBoundingClientRect();
+                const backX = pb.left + pb.width / 2 - (stageBox.left + stageBox.width / 2);
+                olds.forEach((el, k) => {
+                    el.style.pointerEvents = 'none';
+                    el.style.transition = 'transform .3s cubic-bezier(.55,0,.85,.45), opacity .28s ease-in';
+                    el.style.transitionDelay = ((olds.length - 1 - k) * 45) + 'ms';
+                    el.style.transform = `translate(${-backX}px, -215px) rotate(0deg) scale(.4)`;
+                    el.style.opacity = '0';
+                });
+                wait = 320 + olds.length * 45;
+            }
+
             setTimeout(() => {
+                if (token !== myToken) return;
                 stage.innerHTML = '';
                 const items = byCat(id), n = items.length;
                 const deckBox = deckBtns[DECKS.findIndex(x => x.id === id)].getBoundingClientRect();
@@ -1442,8 +1461,8 @@
                 const fromX = deckBox.left + deckBox.width / 2 - (stageBox.left + stageBox.width / 2);
                 items.forEach(({ co, i }, k) => {
                     const mid = (n - 1) / 2;
-                    const rot = (k - mid) * 5;                       // זווית מניפה
-                    const ty = Math.abs(k - mid) * 16;               // קשת
+                    const rot = (k - mid) * 5;
+                    const ty = Math.abs(k - mid) * 16;
                     const el = document.createElement('button');
                     el.className = 'fcard';
                     el.style.setProperty('--rot', rot + 'deg');
@@ -1472,14 +1491,15 @@
                     el.style.opacity = '0';
                     stage.appendChild(el);
                     requestAnimationFrame(() => requestAnimationFrame(() => {
+                        if (token !== myToken) return;
                         el.style.transition = '';
                         el.style.transitionDelay = (k * 70) + 'ms';
                         el.style.transform = '';
                         el.style.opacity = '1';
-                        setTimeout(() => el.style.transitionDelay = '', 700 + k * 70);
+                        setTimeout(() => { if (token === myToken) el.style.transitionDelay = ''; }, 750 + k * 70);
                     }));
                 });
-            }, current ? 240 : 0);
+            }, wait);
         }
         deal('build'); // ברירת מחדל: שני הקורסים הפתוחים על הבמה
     })();
