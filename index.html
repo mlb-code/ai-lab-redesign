@@ -1054,8 +1054,8 @@
     }
     .fw-cell {
         aspect-ratio: 16 / 10; border-radius: 12px;
-        border: 1px solid rgba(255,255,255,.045);
-        background: rgba(255,255,255,.014);
+        border: 1px solid rgba(255,255,255,.1);
+        background: rgba(255,255,255,.035);
     }
     .fw-cell.glow {
         border-color: transparent;
@@ -1063,7 +1063,14 @@
         opacity: .5; filter: saturate(1.1);
         animation: fwPulse 7s ease-in-out infinite;
     }
-    @keyframes fwPulse { 0%,100% { opacity: .38; } 50% { opacity: .62; } }
+    @keyframes fwPulse { 0%,100% { opacity: .55; } 50% { opacity: .9; } }
+    .fw-cell.ignite {
+        border-color: rgba(255,255,255,.22);
+        background: linear-gradient(135deg, var(--g1), var(--g2));
+        box-shadow: 0 0 34px var(--g1), 0 0 90px var(--g1), inset 0 0 24px rgba(255,255,255,.12);
+        animation: fwIgnite 4s ease-in-out forwards;
+    }
+    @keyframes fwIgnite { 0% { opacity: 0; } 25% { opacity: 1; } 62% { opacity: .7; } 100% { opacity: 0; } }
 
     /* ===== סרטוני תלמידים ===== */
     .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -2714,13 +2721,13 @@
     // קיר הפריימים ברקע סקשן הסרטונים
     (function filmWall(){
         const wall = document.getElementById('filmWall');
-        const COLORS = [['#00d4aa22','#00d4aa08'], ['#8b5cf628','#8b5cf60a'], ['#ff784926','#ff784908'], ['#f5c84222','#f5c84208']];
-        const CELLS = 88;
+        const COLORS = [['#00d4aa3d','#00d4aa10'], ['#8b5cf642','#8b5cf612'], ['#ff784940','#ff78490f'], ['#f5c8423a','#f5c8420e']];
+        const CELLS = 88, cells = [];
         for (let i = 0; i < CELLS; i++) {
             const c = document.createElement('div');
             c.className = 'fw-cell';
             const h = (i * 2654435761) % 97;          // פסאודו-אקראי יציב
-            if (h < 12) {
+            if (h < 15) {
                 c.classList.add('glow');
                 const col = COLORS[h % COLORS.length];
                 c.style.setProperty('--g1', col[0]);
@@ -2728,7 +2735,25 @@
                 c.style.animationDelay = (-(h % 7)) + 's';
             }
             wall.appendChild(c);
+            cells.push(c);
         }
+        // הצתות אקראיות — קובייה נדלקת, זוהרת ודועכת (כמו באתר אקשן!)
+        let wallVisible = false;
+        new IntersectionObserver(es => { wallVisible = es[0].isIntersecting; }, { rootMargin: '100px' })
+            .observe(document.getElementById('videos'));
+        const IGNITE = [['#00d4aa8c','#00d4aa1f'], ['#8b5cf696','#8b5cf620'], ['#ff78498c','#ff78491d'], ['#f5c84285','#f5c8421c'], ['#4da3ff85','#4da3ff1c']];
+        setInterval(() => {
+            if (!wallVisible || document.hidden) return;
+            for (let k = 0; k < 1 + (Math.random() < .4 ? 1 : 0); k++) {
+                const c = cells[Math.floor(Math.random() * cells.length)];
+                if (c.classList.contains('glow') || c.classList.contains('ignite')) continue;
+                const col = IGNITE[Math.floor(Math.random() * IGNITE.length)];
+                c.style.setProperty('--g1', col[0]);
+                c.style.setProperty('--g2', col[1]);
+                c.classList.add('ignite');
+                c.addEventListener('animationend', () => c.classList.remove('ignite'), { once: true });
+            }
+        }, 950);
     })();
 
     // ===== סרטוני תלמידים — נבנה מרשימה, פוסטר אמיתי לכל סרטון =====
