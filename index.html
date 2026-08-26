@@ -429,7 +429,7 @@
     body.agent-open { overflow: hidden; }
 
     /* ===== שורת סטטוס + תג דירוג ===== */
-    .hud-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hud-row { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-bottom: 24px; }
     .hud-row .hud-line { margin-bottom: 0; }
     .grating {
         display: inline-flex; align-items: center; gap: 6px;
@@ -451,8 +451,8 @@
     /* ===== HUD עתידני בהירו ===== */
     .hud-line {
         position: relative; display: inline-flex; align-items: center; gap: 10px;
-        padding: 9px 18px; margin-bottom: 24px;
-        color: #9FE8F2; font-size: .82rem; font-weight: 700; letter-spacing: .14em;
+        padding: 9px 14px; margin-bottom: 24px;
+        color: #9FE8F2; font-size: .8rem; font-weight: 700; letter-spacing: .09em;
     }
     .hud-line::before, .hud-line::after {
         content: ""; position: absolute; width: 14px; height: 14px;
@@ -506,24 +506,6 @@
     .hero-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
     .hero-grid { position: relative; z-index: 1; }
 
-    /* ===== תג דירוג גוגל צף ===== */
-    .grating {
-        position: absolute; left: 5%; top: 5%; z-index: 3;
-        display: inline-flex; align-items: center; gap: 7px;
-        padding: 9px 16px; border-radius: 50px; text-decoration: none;
-        background: rgba(255,255,255,.09);
-        backdrop-filter: blur(18px) saturate(1.7); -webkit-backdrop-filter: blur(18px) saturate(1.7);
-        border: 1px solid rgba(255,255,255,.26);
-        box-shadow: inset 0 1.5px 0 rgba(255,255,255,.32), 0 12px 34px rgba(0,0,0,.35);
-        color: var(--on-night-soft); font-size: .86rem; font-weight: 700;
-        transform: rotate(-3deg);
-        animation: gratingFloat 4.4s ease-in-out infinite;
-        transition: transform .2s;
-    }
-    .grating:hover { transform: rotate(0) scale(1.05); animation-play-state: paused; }
-    .grating b { color: #fff; font-weight: 800; direction: ltr; }
-    .gr-star { color: var(--amber); text-shadow: 0 0 12px rgba(245,166,35,.7); }
-    @keyframes gratingFloat { 0%,100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(-3deg) translateY(-7px); } }
     .chip.five { background: rgba(99,102,241,.16); color: var(--accent-deep); font-weight: 800; }
 
     /* ===== HUD עתידני בהירו ===== */
