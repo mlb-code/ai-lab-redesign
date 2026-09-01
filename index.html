@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8">
 <!-- Meta Pixel Code (מהאתר הקיים) -->
 <script>
@@ -1992,8 +1991,11 @@ gtag('config', 'AW-18061574299');
     @media (max-width: 960px) {
         .nav-links, .nav-cta { display: none; }
         .burger { display: block; }
-        /* אין סרגל במובייל — רק המבורגר זכוכית צף מעל ההירו */
-        nav { background: none; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 0; box-shadow: none; }
+        /* אין סרגל במובייל — רק המבורגר זכוכית צף מעל ההירו.
+           הבר עצמו לא לוכד קליקים בהירו (רק המבורגר), כדי שכפתורי ההירו מתחתיו יעבדו */
+        nav { background: none; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 0; box-shadow: none; pointer-events: none; }
+        nav .burger { pointer-events: auto; }
+        nav.scrolled { pointer-events: auto; }
         .nav-inner { width: 100%; justify-content: space-between; height: 64px; }
         .nav-inner .logo { display: none; order: 2; }
         nav { transition: background .3s, box-shadow .3s, border-color .3s; }
@@ -4324,14 +4326,17 @@ gtag('config', 'AW-18061574299');
         }, { threshold: 0 }).observe(heroActs);
     })();
 
-    // ===== בר עליון מקבל רקע כבר אחרי גלילה קצרה =====
-    // (קודם חיכה שכל ההירו ייצא מהמסך — ובינתיים הבורגר הצף כיסה את ה-CTA בלי רקע)
+    // ===== הבר העליון חוזר רק אחרי שעוברים את ההירו =====
+    // בהירו: רק המבורגר הזכוכית צף (בלי בר/רקע). ברגע שעברנו את ההירו — הבר המלא חוזר.
+    // מעבר בינארי נקי לפי תחתית ההירו (במקום סף גלילה קבוע שהקפיץ את הבר באמצע).
     (function navScroll(){
         const nav = document.querySelector('nav');
+        const hero = document.querySelector('.hero');
         if (!nav) return;
         const sent = document.createElement('div');
-        sent.style.cssText = 'position:absolute;top:48px;height:1px;width:1px;pointer-events:none;';
-        document.body.prepend(sent);
+        // נקודה ~72px מעל תחתית ההירו (גובה הבר) — כשהיא יוצאת מראש המסך, הבר חוזר
+        sent.style.cssText = 'position:absolute;bottom:72px;height:1px;width:1px;pointer-events:none;';
+        if (hero) hero.appendChild(sent); else { sent.style.top = '48px'; sent.style.bottom = ''; document.body.prepend(sent); }
         new IntersectionObserver(es =>
             nav.classList.toggle('scrolled', !es[0].isIntersecting)
         ).observe(sent);
