@@ -4328,18 +4328,22 @@ gtag('config', 'AW-18061574299');
 
     // ===== הבר העליון חוזר רק אחרי שעוברים את ההירו =====
     // בהירו: רק המבורגר הזכוכית צף (בלי בר/רקע). ברגע שעברנו את ההירו — הבר המלא חוזר.
-    // מעבר בינארי נקי לפי תחתית ההירו (במקום סף גלילה קבוע שהקפיץ את הבר באמצע).
+    // מדידה ישירה של תחתית ההירו (IntersectionObserver התבלבל באייפון בין "מעל" ל"מתחת"
+    // כשההירו גבוה מהמסך — שניהם !isIntersecting — וגרם לבר להופיע/להיעלם/לחזור).
     (function navScroll(){
         const nav = document.querySelector('nav');
         const hero = document.querySelector('.hero');
-        if (!nav) return;
-        const sent = document.createElement('div');
-        // נקודה ~72px מעל תחתית ההירו (גובה הבר) — כשהיא יוצאת מראש המסך, הבר חוזר
-        sent.style.cssText = 'position:absolute;bottom:72px;height:1px;width:1px;pointer-events:none;';
-        if (hero) hero.appendChild(sent); else { sent.style.top = '48px'; sent.style.bottom = ''; document.body.prepend(sent); }
-        new IntersectionObserver(es =>
-            nav.classList.toggle('scrolled', !es[0].isIntersecting)
-        ).observe(sent);
+        if (!nav || !hero) return;
+        let raf = null;
+        function update(){
+            raf = null;
+            // הבר חוזר רק כשתחתית ההירו עברה מעל קו ~72px מראש המסך
+            nav.classList.toggle('scrolled', hero.getBoundingClientRect().bottom <= 72);
+        }
+        function onScroll(){ if (!raf) raf = requestAnimationFrame(update); }
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll, { passive: true });
+        update();
     })();
 
     // ===== תפריט מובייל =====
