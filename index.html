@@ -147,7 +147,7 @@ gtag('config', 'AW-18061574299');
     .nav-links a:hover::after { width: 100%; }
     .nav-cta {
         background: var(--accent); color: #fff; text-decoration: none;
-        padding: 10px 24px; border-radius: 50px; font-weight: 700; font-size: .92rem;
+        padding: 12px 27px; border-radius: 50px; font-weight: 700; font-size: .94rem;
         transition: background .2s, transform .2s;
     }
     .nav-cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
@@ -164,7 +164,7 @@ gtag('config', 'AW-18061574299');
         .nav-inner {
             pointer-events: auto;
             width: max-content; max-width: calc(100vw - 48px);
-            height: 60px; padding-block: 0; padding-inline: 24px 12px; gap: 26px;
+            height: 74px; padding-block: 0; padding-inline: 30px 17px; gap: 28px;
             border-radius: 999px;
             background:
                 radial-gradient(140px 44px at 82% 0%, rgba(255,255,255,.13), transparent 70%),
@@ -180,7 +180,7 @@ gtag('config', 'AW-18061574299');
             transition: gap .3s ease, height .3s ease, box-shadow .3s, background .3s;
         }
         nav.scrolled .nav-inner {
-            height: 54px; gap: 19px;
+            height: 64px; gap: 21px;
             background:
                 radial-gradient(140px 44px at 82% 0%, rgba(255,255,255,.13), transparent 70%),
                 linear-gradient(163deg, rgba(214,220,248,.15), rgba(140,148,198,.09) 55%, rgba(120,128,188,.11)),
@@ -221,7 +221,7 @@ gtag('config', 'AW-18061574299');
         /* גלילה פנימית: בשום מסך שום כפתור לא נעלם — ופס הגלילה מוסתר כדי לא לשבור את המסגרת */
         overflow-y: auto; overscroll-behavior: contain;
         scrollbar-width: none; -ms-overflow-style: none;
-        padding: 88px 26px calc(30px + env(safe-area-inset-bottom));
+        padding: var(--mm-top, 78px) 22px calc(var(--mm-bot, 20px) + env(safe-area-inset-bottom));
     }
     .mobile-menu::-webkit-scrollbar { display: none; }
     .menu-open .mobile-menu { opacity: 1; pointer-events: auto; }
@@ -238,14 +238,14 @@ gtag('config', 'AW-18061574299');
     /* כל שורה בתפריט = שבב זכוכית עצמאי (בלי קופסה עוטפת) */
     .m-list {
         width: min(480px, 100%); flex-shrink: 0;
-        display: grid; gap: 9px;
+        display: grid; gap: var(--mm-gap, 7px);
         position: relative; z-index: 1;
     }
     .mobile-menu a.mlink {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 15px 20px;
+        padding: var(--mm-link, 11px 17px);
         color: #fff; text-decoration: none;
-        font-family: var(--font-body); font-weight: 600; font-size: 1.02rem;
+        font-family: var(--font-body); font-weight: 600; font-size: var(--mm-linkfs, .97rem);
         background: linear-gradient(163deg, rgba(214,220,248,.12), rgba(164,172,215,.07) 48%, rgba(140,148,198,.1));
         border: 1px solid rgba(255,255,255,.2);
         border-radius: 17px;
@@ -260,12 +260,12 @@ gtag('config', 'AW-18061574299');
     .mobile-menu a.mlink:active { background: rgba(255,255,255,.07); }
     /* היהלום המרחף בתפריט + כפתור — שניהם פותחים את הצ'אט עם ה-AI */
     .m-gem {
-        display: flex; flex-direction: column; align-items: center; gap: 10px;
+        display: flex; flex-direction: column; align-items: center; gap: var(--mm-gemgap, 7px);
         background: none; border: 0; cursor: pointer; padding: 0;
-        margin-bottom: 16px; position: relative; z-index: 1;
+        margin-bottom: var(--mm-gemmb, 11px); position: relative; z-index: 1;
         font-family: var(--font-body);
     }
-    .m-gem .m-gem-core { display: block; width: 64px; height: 64px; animation: mGemFloat 4.2s ease-in-out infinite; }
+    .m-gem .m-gem-core { display: block; width: var(--mm-gem, 46px); height: var(--mm-gem, 46px); animation: mGemFloat 4.2s ease-in-out infinite; }
     .m-gem .m-gem-core img { width: 100%; height: 100%; display: block; animation: mGemTilt 4.2s ease-in-out infinite; }
     @keyframes mGemFloat { 0%, 100% { transform: translateY(3px); } 50% { transform: translateY(-6px); } }
     @keyframes mGemTilt {
@@ -274,20 +274,90 @@ gtag('config', 'AW-18061574299');
     }
     .m-gem .m-gem-label {
         display: inline-flex; align-items: center; gap: 7px;
-        color: #fff; font-weight: 700; font-size: .88rem;
+        color: #fff; font-weight: 700; font-size: var(--mm-gemfs, .83rem);
         background: linear-gradient(163deg, rgba(214,220,248,.18), rgba(140,148,198,.12));
         border: 1px solid rgba(255,255,255,.32); border-radius: 50px;
-        padding: 9px 20px;
+        padding: var(--mm-gempad, 7px 17px);
         box-shadow: inset 0 1.5px 0 rgba(255,255,255,.4), 0 10px 26px rgba(0,0,0,.3);
     }
-    .mobile-menu .m-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 26px; width: min(480px, 100%); flex-shrink: 0; }
-    .mobile-menu .m-social { display: flex; gap: 14px; margin-top: 14px; }
+    .mobile-menu .m-actions { display: flex; flex-direction: column; gap: var(--mm-gap, 7px); margin-top: var(--mm-actmt, 14px); width: min(480px, 100%); flex-shrink: 0; }
+    .mobile-menu .m-actions .btn { padding: var(--mm-btn, 12px 24px); }
+    .mobile-menu .m-social { display: flex; gap: 13px; margin-top: var(--mm-socmt, 12px); }
     .mobile-menu .m-social a {
         display: inline-flex; align-items: center; justify-content: center;
-        width: 42px; height: 42px; border-radius: 50%;
+        width: var(--mm-soc, 38px); height: var(--mm-soc, 38px); border-radius: 50%;
         background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
     }
     .mobile-menu .m-social svg { width: 19px; height: 19px; fill: var(--on-night); }
+
+    /* ===== התפריט חייב להיכנס במסך אחד — מתכווץ לפי גובה המכשיר ולא נגלל =====
+       מדרגות: מסך רגיל · מסך בינוני (iPhone 13 mini) · מסך נמוך (iPhone SE) */
+    @media (max-height: 780px) {
+        .mobile-menu {
+            --mm-top: 72px; --mm-bot: 14px;
+            --mm-gem: 40px; --mm-gemgap: 6px; --mm-gemmb: 8px; --mm-gemfs: .79rem; --mm-gempad: 6px 15px;
+            --mm-gap: 6px; --mm-link: 9px 16px; --mm-linkfs: .93rem;
+            --mm-actmt: 11px; --mm-btn: 11px 22px; --mm-socmt: 9px; --mm-soc: 35px;
+        }
+    }
+    @media (max-height: 690px) {
+        .mobile-menu {
+            --mm-top: 66px; --mm-bot: 10px;
+            --mm-gem: 34px; --mm-gemgap: 5px; --mm-gemmb: 6px; --mm-gemfs: .75rem; --mm-gempad: 5px 13px;
+            --mm-gap: 5px; --mm-link: 7.5px 14px; --mm-linkfs: .89rem;
+            --mm-actmt: 8px; --mm-btn: 9.5px 20px; --mm-socmt: 7px; --mm-soc: 32px;
+        }
+        .mobile-menu a.mlink { border-radius: 14px; }
+    }
+    @media (max-height: 600px) {
+        .mobile-menu {
+            --mm-top: 60px; --mm-bot: 8px;
+            --mm-gem: 0px; --mm-gemgap: 0px; --mm-gemmb: 5px; --mm-gemfs: .73rem; --mm-gempad: 5px 12px;
+            --mm-gap: 4px; --mm-link: 6.5px 13px; --mm-linkfs: .85rem;
+            --mm-actmt: 6px; --mm-btn: 8.5px 18px; --mm-socmt: 6px; --mm-soc: 29px;
+        }
+        /* במסך נמוך במיוחד היהלום המצויר מוסתר — התווית לבדה עדיין פותחת את הסוכן */
+        .m-gem .m-gem-core { display: none; }
+    }
+
+    /* ===== פס "איך זה עובד" — המסר שהלימודים בזום, מיד מתחת להירו ===== */
+    .zbar { padding: 6px 0 4px; }
+    .zbar-list {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+        list-style: none; padding: 0; margin: 0;
+    }
+    .zbar-chip {
+        display: flex; align-items: center; gap: 12px;
+        padding: 14px 16px; border-radius: 18px;
+        background: linear-gradient(163deg, rgba(214,220,248,.11), rgba(164,172,215,.06) 48%, rgba(140,148,198,.09));
+        border: 1px solid rgba(255,255,255,.17);
+        box-shadow: inset 0 1.5px 0 rgba(255,255,255,.24), inset 0 -1px 0 rgba(0,0,0,.14);
+    }
+    .zbar-ic { flex-shrink: 0; font-size: 1.5rem; line-height: 1; }
+    /* נקודת "שידור חי" פועמת — במקום אימוג'י */
+    .zbar-live {
+        width: 13px; height: 13px; border-radius: 50%;
+        background: #FF5A6E; box-shadow: 0 0 0 4px rgba(255,90,110,.18);
+        animation: zLive 1.9s ease-in-out infinite; margin-inline: 5px;
+    }
+    @keyframes zLive {
+        0%, 100% { box-shadow: 0 0 0 4px rgba(255,90,110,.16); opacity: .9; }
+        50% { box-shadow: 0 0 0 8px rgba(255,90,110,.05); opacity: 1; }
+    }
+    .zbar-tx { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .zbar-tx b { color: var(--on-night); font-size: .97rem; font-weight: 700; line-height: 1.25; }
+    .zbar-tx span { color: var(--on-night-soft); font-size: .82rem; line-height: 1.3; }
+    @media (max-width: 960px) {
+        .zbar { padding: 2px 0 6px; }
+        .zbar-list { grid-template-columns: 1fr 1fr; gap: 9px; }
+        .zbar-chip { padding: 12px 12px; gap: 9px; border-radius: 15px; }
+        .zbar-ic { font-size: 1.28rem; }
+        .zbar-tx b { font-size: .87rem; }
+        .zbar-tx span { font-size: .74rem; }
+    }
+    @media (max-width: 380px) {
+        .zbar-list { grid-template-columns: 1fr; }
+    }
 
     /* ===== Buttons ===== */
     .btn {
@@ -392,38 +462,74 @@ gtag('config', 'AW-18061574299');
     /* ===== הסוכן: שורת שאלה, כפתור צף, לוח פיקוד ===== */
     .holo-wrap { --hr: 60px; }
     .holo-wrap::before { border-radius: var(--hr); }
-    .ask-wrap { --hr: 19px; display: flex; max-width: 540px; margin-bottom: 28px; border-radius: 19px; position: relative; z-index: 0; }
+    .ask-wrap { --hr: 26px; display: flex; max-width: 580px; margin-bottom: 30px; border-radius: 26px; position: relative; z-index: 0; }
     .ask-wrap::after {
         content: ""; position: absolute; inset: -15px; z-index: -1; pointer-events: none;
-        border-radius: 44px;
+        border-radius: 50px;
         background:
-            radial-gradient(58% 86% at 26% 50%, rgba(77,214,232,.4), transparent 70%),
-            radial-gradient(58% 86% at 76% 50%, rgba(139,92,246,.44), transparent 70%);
-        filter: blur(17px);
+            radial-gradient(58% 90% at 24% 50%, rgba(77,214,232,.5), transparent 70%),
+            radial-gradient(58% 90% at 78% 50%, rgba(139,92,246,.54), transparent 70%);
+        filter: blur(19px);
         animation: askAura 3.8s ease-in-out infinite;
     }
     @keyframes askAura {
         0%, 100% { opacity: .5; transform: scale(.985); }
         50% { opacity: 1; transform: scale(1.05); }
     }
+    /* נשימת ההילה — מוגדר גלובלית כי הדיסק בהירו משתמש בו גם בדסקטופ */
+    @keyframes coreAura {
+        0%, 100% { opacity: .55; }
+        50% { opacity: 1; }
+    }
     .ask-bar {
-        flex: 1; display: flex; align-items: center; gap: 12px;
+        flex: 1; display: flex; align-items: center; gap: 15px;
         background: rgba(255,255,255,.08);
         backdrop-filter: blur(22px) saturate(1.7) brightness(1.05);
         -webkit-backdrop-filter: blur(22px) saturate(1.7) brightness(1.05);
         border: 1px solid rgba(255,255,255,.24);
         box-shadow: inset 0 1.5px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(0,0,0,.18);
-        border-radius: 19px;
-        padding: 17px 20px; cursor: pointer; text-align: right;
+        border-radius: 26px;
+        padding: 13px 15px; cursor: pointer; text-align: right;
         font-family: var(--font-body); color: var(--on-night);
         transition: border-color .25s, background .25s, transform .2s;
     }
     .ask-bar:hover { border-color: rgba(77,214,232,.6); background: rgba(255,255,255,.09); transform: translateY(-1px); }
     .ask-ic {
         flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+        position: relative; width: 58px; height: 58px; border-radius: 50%;
+        background:
+            linear-gradient(150deg, rgba(190,200,255,.18), transparent 48%, rgba(140,150,240,.11)),
+            linear-gradient(163deg, rgba(214,220,248,.13), rgba(164,172,215,.07) 48%, rgba(140,148,198,.11));
+        border: 1px solid rgba(255,255,255,.24);
+        box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,.45),
+            inset 0 -1px 0 rgba(0,0,0,.2),
+            inset 0 0 18px rgba(99,102,241,.16),
+            0 8px 22px rgba(0,0,0,.32),
+            0 0 40px -8px rgba(99,102,241,.45);
+    }
+    /* טבעת צבעי המותג על קו המתאר — אותה שפה כמו הדיסק במובייל */
+    .ask-ic::before {
+        content: ""; position: absolute; inset: -1.5px; border-radius: 50%; pointer-events: none;
+        background: conic-gradient(from 215deg,
+            rgba(139,141,255,.65), rgba(77,214,232,.55) 28%,
+            rgba(123,232,196,.4) 50%, rgba(183,156,255,.6) 74%,
+            rgba(139,141,255,.65));
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 1.5px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 1.5px));
+    }
+    /* הילה רכה שנושמת מסביב לדיסק */
+    .ask-ic::after {
+        content: ""; position: absolute; inset: -8px; border-radius: 50%; pointer-events: none; z-index: -1;
+        background: conic-gradient(from 215deg,
+            rgba(139,141,255,.3), rgba(77,214,232,.24) 28%,
+            rgba(123,232,196,.15) 50%, rgba(183,156,255,.26) 74%,
+            rgba(139,141,255,.3));
+        filter: blur(8px); opacity: .85;
+        animation: coreAura 3.8s ease-in-out infinite;
     }
     .ask-ic img {
-        width: 26px; height: 26px; display: block;
+        width: 40px; height: 40px; display: block; position: relative;
         animation: gemHover 3.2s ease-in-out infinite;
         filter: drop-shadow(0 0 8px rgba(120, 200, 255, .55));
     }
@@ -434,17 +540,19 @@ gtag('config', 'AW-18061574299');
     @keyframes sparkRotate { to { transform: rotate(360deg); } }
     @keyframes sparkBreath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
     @keyframes satTwinkle { 0%, 100% { opacity: .2; transform: scale(.45) rotate(0deg); } 50% { opacity: 1; transform: scale(1.1) rotate(35deg); } }
-    .ask-ph { flex: 1; display: inline-flex; align-items: center; gap: 2px; color: var(--on-night); font-size: 1.06rem; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; }
+    .ask-ph { flex: 1; display: inline-flex; align-items: center; gap: 2px; color: var(--on-night); font-size: 1.12rem; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; }
     .ask-caret { width: 7px; height: 16px; background: rgba(159,232,242,.8); flex-shrink: 0; animation: hudBlink 1.05s steps(1) infinite; }
     .ask-core { display: none; }
     .cr-row { display: contents; }
     a.grating-m { display: none; }
     .ask-go {
-        flex-shrink: 0; font-size: .88rem; font-weight: 800; color: #0B1020;
+        flex-shrink: 0; font-size: .96rem; font-weight: 800; color: #0B1020;
         background: linear-gradient(120deg, #4DD6E8, #8B8DFF);
-        border: 0; border-radius: 50px; padding: 8px 16px;
-        box-shadow: 0 6px 18px rgba(77,214,232,.4), inset 0 1px 0 rgba(255,255,255,.5);
+        border: 0; border-radius: 50px; padding: 13px 26px;
+        box-shadow: 0 8px 24px rgba(77,214,232,.48), inset 0 1px 0 rgba(255,255,255,.55);
+        transition: transform .2s, box-shadow .2s;
     }
+    .ask-bar:hover .ask-go { transform: translateY(-1px); box-shadow: 0 11px 30px rgba(77,214,232,.6), inset 0 1px 0 rgba(255,255,255,.6); }
     .ask-wrap.power .ask-bar { animation: askPower 1.5s ease; }
     .ask-wrap.power::before { animation-duration: .9s; }
     @keyframes askPower {
@@ -2284,13 +2392,36 @@ gtag('config', 'AW-18061574299');
         <div class="pmosaic" id="pmosaic"></div>
 
     </div>
-    <a href="#hub" class="scroll-cue" aria-label="גללו למטה — יש עוד הרבה לגלות">
+    <a href="#howitworks" class="scroll-cue" aria-label="גללו למטה — יש עוד הרבה לגלות">
         <span>יש עוד המון לגלות</span>
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
     </a>
 </header>
 
 <main>
+<!-- ============ פס "איך זה עובד" — הכל בזום ============ -->
+<section class="zbar" id="howitworks" aria-label="איך הלימודים מתנהלים">
+    <div class="container">
+        <ul class="zbar-list">
+            <li class="zbar-chip">
+                <span class="zbar-ic" aria-hidden="true">🎥</span>
+                <span class="zbar-tx"><b>הכל בזום</b><span>מהבית, מול המסך</span></span>
+            </li>
+            <li class="zbar-chip">
+                <span class="zbar-ic" aria-hidden="true">👥</span>
+                <span class="zbar-tx"><b>עד 5 תלמידים</b><span>קבוצה קטנה, יחס אישי</span></span>
+            </li>
+            <li class="zbar-chip">
+                <span class="zbar-ic" aria-hidden="true">📍</span>
+                <span class="zbar-tx"><b>מכל הארץ</b><span>בלי נסיעות והסעות</span></span>
+            </li>
+            <li class="zbar-chip">
+                <span class="zbar-ic zbar-live" aria-hidden="true"></span>
+                <span class="zbar-tx"><b>שיעור חי עם מורה</b><span>לא הקלטות</span></span>
+            </li>
+        </ul>
+    </div>
+</section>
 <!-- ============ מרכז הבחירה ============ -->
 <section class="hub" id="hub">
     <div class="container">

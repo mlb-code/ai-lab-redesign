@@ -12,7 +12,8 @@
     var path = window.location.pathname;
     var isBlogIndex = path === '/blog/' || path === '/blog/index.html';
 
-    // ---------- NAV HTML (אי זכוכית צף — שפת העיצוב 2026) ----------
+    // ---------- NAV + תפריט מובייל 2026 ----------
+    // זהה לחלוטין לאתר הראשי (redesign-2026.html). העיצוב ב-/blog/menu-2026.css.
     var navHTML = ''
         + '<nav id="navbar">'
         + '<div class="nav-inner-2026">'
@@ -28,26 +29,33 @@
         + '    <a href="https://my.ai-lab.co.il" class="nav-cta nav-ghost">אזור אישי</a>'
         + '    <a href="https://my.ai-lab.co.il/courses" class="nav-cta">הרשמה</a>'
         + '  </div>'
-        + '  <button class="mobile-menu-btn" id="menuBtn" aria-label="תפריט">&#9776;</button>'
+        + '  <button class="burger" id="burger" aria-label="תפריט"><span></span><span></span><span></span></button>'
         + '</div>'
         + '</nav>'
-        + '<div class="mobile-menu-panel" id="mobileMenuPanel">'
-        + '  <div class="mobile-menu-header">'
-        + '    <span class="mobile-menu-logo">AI Lab</span>'
-        + '    <button class="mobile-close-btn" id="menuCloseBtn" aria-label="סגור תפריט">&times;</button>'
+        + '<div class="mobile-menu" id="mobileMenu">'
+        + '  <button class="m-gem" id="menuAgentBtn" type="button" aria-label="דברו עם ה-AI שלנו">'
+        + '    <span class="m-gem-core"><img src="/logo-gem-96.png" alt="" width="64" height="64"></span>'
+        + '    <span class="m-gem-label">דברו עם ה-AI שלנו</span>'
+        + '  </button>'
+        + '  <div class="m-list">'
+        + '    <a class="mlink" href="/blog/">עולם ה-AI</a>'
+        + '    <a class="mlink" href="/#wall">הפרויקטים של התלמידים</a>'
+        + '    <a class="mlink" href="/#videos">סרטוני תלמידים</a>'
+        + '    <a class="mlink" href="/#courses">הקורסים והמחירים</a>'
+        + '    <a class="mlink" href="/#community">קהילה</a>'
+        + '    <a class="mlink" href="/faq.html">שאלות נפוצות</a>'
         + '  </div>'
-        + '  <ul class="mobile-menu-links">'
-        + '    <li><a href="/blog/">עולם ה-AI</a></li>'
-        + '    <li><a href="/#courses">הקורסים והמחירים</a></li>'
-        + '    <li><a href="/#wall">הפרויקטים של התלמידים</a></li>'
-        + '    <li><a href="/faq.html">שאלות נפוצות</a></li>'
-        + '    <li><a href="/mission.html">המשימה שלנו</a></li>'
-        + '    <li class="mobile-cta mobile-cta-green"><a href="https://my.ai-lab.co.il/courses">הרשמה</a></li>'
-        + '    <li class="mobile-cta"><a href="https://chat.whatsapp.com/LpbKfD25gYF6Tx2K9Lj5WG?mode=hqctcli" target="_blank" rel="noopener" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;" onclick="if(window.gtag)gtag(\'event\',\'whatsapp_community_click\',{event_category:\'community\',event_label:\'mobile_nav_join\'})">הצטרפו לקהילה</a></li>'
-        + '    <li class="mobile-cta"><a href="https://my.ai-lab.co.il" style="background:transparent;border:1.5px solid rgba(255,255,255,0.28);color:#fff;">אזור אישי</a></li>'
-        + '  </ul>'
-        + '</div>'
-        + '<div class="mobile-overlay" id="mobileOverlay"></div>';
+        + '  <div class="m-actions">'
+        + '    <a href="https://my.ai-lab.co.il/courses" class="btn btn-primary">הרשמה</a>'
+        + '    <a href="https://my.ai-lab.co.il" class="btn btn-ghost-dark">אזור אישי</a>'
+        + '    <a href="https://wa.me/972546500795" target="_blank" rel="noopener" class="btn btn-wa">וואטסאפ</a>'
+        + '  </div>'
+        + '  <div class="m-social">'
+        + '    <a href="https://www.instagram.com/ai.lab.il" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 2A76 76 0 0 0 7.3 4.3c-.9.1-1.3.2-1.6.3-.4.2-.7.3-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.6-.1 1.2-.1 1.5-.1 4.6s0 3.4.1 4.6c.1.9.2 1.3.3 1.6.2.4.3.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.6.3 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c.9-.1 1.3-.2 1.6-.3.4-.2.7-.3 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.6.1-1.2.1-1.5.1-4.6s0-3.4-.1-4.6c-.1-.9-.2-1.3-.3-1.6-.2-.4-.3-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.6-.3-1.2-.1-1.5-.1-4.7-.1M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6m5.2-3.4a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4"/></svg></a>'
+        + '    <a href="https://www.tiktok.com/@ai.labisrael" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 7.3a5 5 0 0 1-3.5-1.4v6.6a6 6 0 1 1-6-6c.2 0 .5 0 .7.1v3a3 3 0 1 0 2.2 2.9V1.9h3a5 5 0 0 0 .1.9 5 5 0 0 0 2.2 3.2 5 5 0 0 0 2.8.9v3a8 8 0 0 1-1.5-.6"/></svg></a>'
+        + '    <a href="https://www.facebook.com/share/18CXmH7Zum/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12"/></svg></a>'
+        + '  </div>'
+        + '</div>';
 
     // ---------- REGISTER POPUP HTML ----------
     var popupHTML = ''
@@ -195,6 +203,10 @@
             theme.rel = 'stylesheet';
             theme.href = '/blog/theme-2026.css';
             document.head.appendChild(theme);
+            var menuCss = document.createElement('link');
+            menuCss.rel = 'stylesheet';
+            menuCss.href = '/blog/menu-2026.css';
+            document.head.appendChild(menuCss);
         }
         // הסוכן של AI Lab מלווה את כל דפי הבלוג
         if (!document.querySelector('script[src="/agent-widget.js"]')) {
@@ -217,20 +229,22 @@
             ctaSlot.outerHTML = leadFormHTML(slug);
         }
 
-        // Wire up mobile menu now that nav exists
-        var menuBtn = document.getElementById('menuBtn');
-        var mobilePanel = document.getElementById('mobileMenuPanel');
-        var mobileOverlay = document.getElementById('mobileOverlay');
-        var menuCloseBtn = document.getElementById('menuCloseBtn');
-
-        if (menuBtn && mobilePanel && mobileOverlay) {
-            menuBtn.addEventListener('click', function () {
-                mobilePanel.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+        // חיווט תפריט המובייל — זהה לאתר הראשי: מחלקה menu-open על ה-body
+        var burger = document.getElementById('burger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (burger && mobileMenu) {
+            burger.addEventListener('click', function () {
+                document.body.classList.toggle('menu-open');
             });
-            if (menuCloseBtn) menuCloseBtn.addEventListener('click', closeMobileMenu);
-            mobileOverlay.addEventListener('click', closeMobileMenu);
-            document.querySelectorAll('.mobile-menu-links a').forEach(function (a) {
-                a.addEventListener('click', closeMobileMenu);
+            mobileMenu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
+            });
+            // היהלום בתפריט פותח את הסוכן (agent-widget.js) וסוגר את התפריט
+            var gemBtn = document.getElementById('menuAgentBtn');
+            if (gemBtn) gemBtn.addEventListener('click', function () {
+                document.body.classList.remove('menu-open');
+                var orb = document.getElementById('agwOrb');
+                if (orb) orb.click();
             });
         }
 
@@ -245,25 +259,9 @@
     });
 
     // ---------- GLOBAL HELPERS ----------
-    window.openMobileMenu = function () {
-        var p = document.getElementById('mobileMenuPanel');
-        var o = document.getElementById('mobileOverlay');
-        var b = document.getElementById('menuBtn');
-        if (p) p.classList.add('open');
-        if (o) o.classList.add('active');
-        if (b) b.innerHTML = '&times;';
-        document.body.style.overflow = 'hidden';
-    };
-
-    window.closeMobileMenu = function () {
-        var p = document.getElementById('mobileMenuPanel');
-        var o = document.getElementById('mobileOverlay');
-        var b = document.getElementById('menuBtn');
-        if (p) p.classList.remove('open');
-        if (o) o.classList.remove('active');
-        if (b) b.innerHTML = '&#9776;';
-        document.body.style.overflow = '';
-    };
+    // תאימות לאחור: דפים ישנים עדיין קוראים לפונקציות האלה
+    window.openMobileMenu  = function () { document.body.classList.add('menu-open'); };
+    window.closeMobileMenu = function () { document.body.classList.remove('menu-open'); };
 
     window.openRegisterPopup = function () {
         var p = document.getElementById('registerPopup');
