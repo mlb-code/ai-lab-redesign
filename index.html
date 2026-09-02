@@ -1499,11 +1499,17 @@ gtag('config', 'AW-18061574299');
 
     /* ===== מרכז הבחירה — פאנלי זכוכית ===== */
     .hub {
-        padding: 44px 0 48px; position: relative;
+        padding: 44px 0 48px; position: relative; isolation: isolate;
+    }
+    /* רקע הסקשן בשכבה עם מסכת דעיכה בקצוות — נמס לרקע הדף, אפס תפרים (מיזוג רך) */
+    .hub::before {
+        content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
         background:
             radial-gradient(52% 42% at 6% 10%, rgba(124,108,255,.15), transparent 70%),
             radial-gradient(46% 40% at 95% 84%, rgba(77,214,232,.11), transparent 70%),
-            linear-gradient(180deg, #0A0E27 0%, #151942 16%, #1A1E50 55%, #121539 100%);
+            linear-gradient(180deg, #151942 0%, #1A1E50 55%, #151942 100%);
+        -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+        mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
     }
     .hub .container { display: flex; flex-direction: column; gap: 0; max-width: none; padding: 0 16px; }
     .hub-item { position: relative; }
@@ -1564,11 +1570,16 @@ gtag('config', 'AW-18061574299');
     /* ===== הקורסים והמחירים — שדה סגול עצמאי, רשת הגיליון כרקע הסקשן ===== */
     .courses-standalone {
         position: relative; overflow: hidden;
-        padding: 40px 0 64px;
+        padding: 40px 0 64px; isolation: isolate;
+    }
+    .courses-standalone::before {
+        content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
         background:
             radial-gradient(90% 55% at 50% 0%, rgba(139,120,255,.13), transparent 62%),
             radial-gradient(60% 46% at 10% 90%, rgba(168,120,255,.1), transparent 70%),
-            linear-gradient(180deg, #121539 0%, #1D1750 30%, #181242 70%, #0F0C28 100%);
+            linear-gradient(180deg, #1D1750 26%, #181242 68%, #14103A 100%);
+        -webkit-mask-image: linear-gradient(180deg, transparent, #000 10%, #000 90%, transparent);
+        mask-image: linear-gradient(180deg, transparent, #000 10%, #000 90%, transparent);
     }
     .courses-standalone .topo-canvas {
         -webkit-mask-image: linear-gradient(180deg, transparent, #000 8%, #000 88%, transparent);
@@ -1792,6 +1803,12 @@ gtag('config', 'AW-18061574299');
 
     /* ===== רצועה כהה: תהליך + הוכחה ===== */
     .band-dark { color: var(--on-night); }
+    /* הילה עדינה מאחורי כותרות הסקשנים הכהים — עומק במקום תפרים (מיזוג רך, החלטת מאיר 02/09) */
+    .band-dark .sec-head { position: relative; }
+    .band-dark .sec-head::before {
+        content: ""; position: absolute; inset: -70px -140px; z-index: -1; pointer-events: none;
+        background: radial-gradient(50% 62% at 50% 42%, rgba(124,108,255,.13), rgba(77,214,232,.05) 55%, transparent 75%);
+    }
     .band-dark .sec-head h2 { color: #fff; }
     .band-dark .sec-head .eyebrow { color: var(--accent-bright); }
     .band-dark .sec-head p { color: var(--on-night-soft); }
