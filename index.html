@@ -178,19 +178,7 @@ gtag('config', 'AW-18061574299');
                 0 18px 50px rgba(0,0,0,.4);
             transition: gap .3s ease, height .3s ease, box-shadow .3s, background .3s;
         }
-        nav.scrolled .nav-inner {
-            height: 64px; gap: 21px;
-            background:
-                radial-gradient(140px 44px at 82% 0%, rgba(255,255,255,.13), transparent 70%),
-                linear-gradient(163deg, rgba(214,220,248,.15), rgba(140,148,198,.09) 55%, rgba(120,128,188,.11)),
-                rgba(13,16,40,.68);
-            box-shadow:
-                inset 0 1.5px 0 rgba(255,255,255,.32),
-                inset 0 -1px 0 rgba(0,0,0,.25),
-                0 20px 56px rgba(0,0,0,.5),
-                0 0 0 1px rgba(139,141,255,.14);
-        }
-        nav.scrolled .logo .gem { filter: drop-shadow(0 0 14px rgba(120, 200, 255, .65)); }
+        /* בדסקטופ האי נשאר זהה לכל אורך הגלילה — בלי כיווץ/שינוי (הקפיצה נראתה לא מקצועית) */
     }
 
     .burger {
@@ -1482,7 +1470,12 @@ gtag('config', 'AW-18061574299');
         background: var(--mist); border-radius: 14px; padding: 13px 18px;
         font-weight: 700; font-size: .95rem; margin-bottom: 22px;
     }
-    .mc-deliver::before { content: "🏁 "; }
+    .mc-deliver::before {
+        content: ""; display: inline-block; width: 15px; height: 15px; margin-inline-end: 7px;
+        background: currentColor; vertical-align: -2px;
+        -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>') center/contain no-repeat;
+        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>') center/contain no-repeat;
+    }
     .mc-syl { font-size: .85rem; font-weight: 800; letter-spacing: .08em; color: var(--accent-deep); margin-bottom: 14px; }
     .mc-sessions { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 26px; }
     .mc-sessions li { display: flex; gap: 13px; align-items: flex-start; }
@@ -2387,7 +2380,7 @@ gtag('config', 'AW-18061574299');
                 <a class="hero-comm" href="https://chat.whatsapp.com/LpbKfD25gYF6Tx2K9Lj5WG?mode=hqctcli" target="_blank" rel="noopener">
                 <svg class="wa-ic" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 בואו לקהילה שלנו
-                <span class="wave">👋</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-3px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </a>
             </div>
         </div>
@@ -2406,15 +2399,15 @@ gtag('config', 'AW-18061574299');
     <div class="container">
         <ul class="zbar-list">
             <li class="zbar-chip">
-                <span class="zbar-ic" aria-hidden="true">🎥</span>
+                <span class="zbar-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
                 <span class="zbar-tx"><b>הכל בזום</b><span>מהבית, מול המסך</span></span>
             </li>
             <li class="zbar-chip">
-                <span class="zbar-ic" aria-hidden="true">👥</span>
+                <span class="zbar-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
                 <span class="zbar-tx"><b>עד 5 תלמידים</b><span>קבוצה קטנה, יחס אישי</span></span>
             </li>
             <li class="zbar-chip">
-                <span class="zbar-ic" aria-hidden="true">📍</span>
+                <span class="zbar-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
                 <span class="zbar-tx"><b>מכל הארץ</b><span>בלי נסיעות והסעות</span></span>
             </li>
             <li class="zbar-chip">
@@ -2554,14 +2547,14 @@ gtag('config', 'AW-18061574299');
     <div class="container">
             <div class="portal-sec reveal">
                 <div class="portal-copy">
-                    <span class="eyebrow">🔑 כלול בכל קורס</span>
+                    <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg> כלול בכל קורס</span>
                     <h3>האזור האישי</h3>
                     <p class="portal-sub">כל תלמיד מקבל פורטל משלו עם כל החומר — ועוזר AI שזמין תמיד.</p>
                     <ul class="portal-feats">
-                        <li><b>🤖 עוזר AI</b> — זמין 24/7 לכל שאלה על הלימודים</li>
-                        <li><b>📚 כל המפגשים</b> — במקום אחד</li>
-                        <li><b>🎯 תרגילים ומצגות</b> — לכל שיעור</li>
-                        <li><b>🛠️ ארגז כלים מלא</b> — הכלים שעובדים איתם בקורס</li>
+                        <li><b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> עוזר AI</b> — זמין 24/7 לכל שאלה על הלימודים</li>
+                        <li><b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg> כל המפגשים</b> — במקום אחד</li>
+                        <li><b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> תרגילים ומצגות</b> — לכל שיעור</li>
+                        <li><b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> ארגז כלים מלא</b> — הכלים שעובדים איתם בקורס</li>
                     </ul>
                     <div class="portal-cta">
                         <a href="https://my.ai-lab.co.il" class="btn btn-primary">כניסה לאזור האישי <span class="arr">←</span></a>
@@ -2576,7 +2569,7 @@ gtag('config', 'AW-18061574299');
                         </div>
                         <div class="pp-pill"><span class="on">בסיסי</span><span>מתקדם</span></div>
                         <div class="pp-tip">
-                            <div class="pp-tip-label">💡 טיפ היום · AI ופרומפטים</div>
+                            <div class="pp-tip-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> טיפ היום · AI ופרומפטים</div>
                             <div class="pp-tip-text">פרומפט טוב מתחיל בתפקיד: "אתה מעצב מקצועי". התוצאות יהיו טובות פי שלוש.</div>
                         </div>
                         <div class="pp-prog">
@@ -2586,11 +2579,11 @@ gtag('config', 'AW-18061574299');
                         <div class="pp-lesson done"><span class="pp-n">✓</span><div><b>מי נגד מי</b><small>הושלם</small></div></div>
                         <div class="pp-lesson done"><span class="pp-n">✓</span><div><b>הכלים שיבנו בשבילך</b><small>הושלם</small></div></div>
                         <div class="pp-lesson next"><span class="pp-n">▶</span><div><b>GitHub — בית הקוד שלך</b><small>השיעור הבא</small></div></div>
-                        <div class="pp-chat">🤖 יש שאלה על השיעור? דברו איתי…</div>
+                        <div class="pp-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> יש שאלה על השיעור? דברו איתי…</div>
                     </div>
-                    <div class="pp-badge pb1">🤖 עוזר AI<br><small>זמין 24/7</small></div>
-                    <div class="pp-badge pb2">📚 כל המפגשים<br><small>במקום אחד</small></div>
-                    <div class="pp-badge pb3">🎯 תרגילים<br><small>ומצגות</small></div>
+                    <div class="pp-badge pb1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> עוזר AI<br><small>זמין 24/7</small></div>
+                    <div class="pp-badge pb2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg> כל המפגשים<br><small>במקום אחד</small></div>
+                    <div class="pp-badge pb3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> תרגילים<br><small>ומצגות</small></div>
                 </div>
             </div>
     </div>
@@ -2869,10 +2862,10 @@ gtag('config', 'AW-18061574299');
                 <div class="f-role">יזם · משקיע · מנחה AI</div>
                 <p>סמנכ"ל פיתוח עסקי לשעבר בחברות הייטק. בנה מוצרים, ניהל שותפויות והשקיע בסטארטאפים. היום מלמד ילדים ומבוגרים לחשוב — ולבנות — עם AI.</p>
                 <div class="f-tags">
-                    <span>🚀 יזם</span>
-                    <span>📈 משקיע</span>
-                    <span>🎓 האוניברסיטה העברית</span>
-                    <span>🏢 הייטק</span>
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> יזם</span>
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg> משקיע</span>
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M21.42 10.92 12.83 15a2 2 0 0 1-1.66 0L2.58 10.92a1 1 0 0 1 0-1.84L11.17 5a2 2 0 0 1 1.66 0l8.59 4.08a1 1 0 0 1 0 1.84Z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> האוניברסיטה העברית</span>
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg> הייטק</span>
                 </div>
             </div>
         </div>
@@ -3020,41 +3013,41 @@ gtag('config', 'AW-18061574299');
 
     // ===== מפת הקורסים =====
     const COURSES = [
-      { lvl:1, em:'🚀', c:'#EEF0FF', cat:['build','biz'], name:'יזמות ובינה מלאכותית', tag:'מקימים מיזם אמיתי ובונים לו אתר ראשון עם AI — נקודת הפתיחה של כל תלמיד במרכז.',
+      { lvl:1, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>', c:'#EEF0FF', cat:['build','biz'], name:'יזמות ובינה מלאכותית', tag:'מקימים מיזם אמיתי ובונים לו אתר ראשון עם AI — נקודת הפתיחה של כל תלמיד במרכז.',
         age:'9+', status:'open', price:'990 ₪', deliver:'מיזם אישי + אתר חי באוויר עם כתובת אמיתית',
         sessions:[ ['רעיון וחזון','בוחרים תחום שאתה אוהב והופכים אותו לרעיון למיזם'], ['מהרעיון לתכנון','חוקרים קהל ומתחרים בעזרת AI'], ['בונים אתר ראשון','העמוד הראשון שלך עולה בעזרת כלי AI'], ['מעצבים','צבעים, סגנון ומראה מקצועי'], ['תוכן שמוכר','טקסטים ותמונות שמספרים את הסיפור'], ['עולים לאוויר','האתר מקבל כתובת אמיתית באינטרנט'], ['משפרים ומרחיבים','פידבק אמיתי ושדרוגים'], ['ערב השקה','מציגים את המיזמים מול ההורים'] ] },
-      { lvl:2, em:'🎬', c:'#FDF0E6', cat:['create'], name:'יצירת סרטונים ב-AI', tag:'מפיקים סרטונים אמיתיים עם כלי ה-AI החדשים — כולל עולם יוצרי התוכן.',
+      { lvl:2, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>', c:'#FDF0E6', cat:['create'], name:'יצירת סרטונים ב-AI', tag:'מפיקים סרטונים אמיתיים עם כלי ה-AI החדשים — כולל עולם יוצרי התוכן.',
         age:'10+', status:'first', price:'', deliver:'סרטון מופק ברמה גבוהה + תבנית לערוץ תוכן',
         sessions:[ ['איך סרטון "תופס"','מנתחים סרטונים ויראליים ובוחרים רעיון'], ['תסריט וסטוריבורד','כותבים תסריט קצר עם AI'], ['מפיקים שוטים','יצירת סצנות ודמויות בכלי טקסט-לווידאו'], ['קול וקריינות','קריינות AI, כתוביות ומוזיקת רקע'], ['עריכה א\'','חיתוך, קצב ומעברים'], ['עריכה ב\'','אפקטים, צבע והתאמה לשורטס'], ['הסרטון של המיזם שלך','סרטון תדמית לפרויקט שלך'], ['ערב בכורה','הקרנה חגיגית ואיך ממשיכים ערוץ'] ] },
-      { lvl:2, em:'📣', c:'#E8F7EE', cat:['biz','stage'], name:'שיווק', tag:'הופכים מיזם למותג: עיצוב, מיתוג וקמפיין אמיתי ראשון.',
+      { lvl:2, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>', c:'#E8F7EE', cat:['biz','stage'], name:'שיווק', tag:'הופכים מיזם למותג: עיצוב, מיתוג וקמפיין אמיתי ראשון.',
         age:'10+', status:'soon', price:'', deliver:'מותג שלם + קמפיין השקה אמיתי',
         sessions:[ ['מה זה מותג','מפרקים מותגים מוכרים: למה קונים מהם?'], ['מי הלקוח שלך','בונים פרסונת לקוח עם AI'], ['שם, לוגו וצבעים','מעצבים מיתוג עם כלי AI'], ['שפת המותג','סלוגן, טון דיבור ושפה עיצובית'], ['המודעה הראשונה','כותבים קופי שמוכר'], ['רשתות חברתיות','לוח תוכן ופוסטים עם AI'], ['דף נחיתה שממיר','משדרגים את האתר שלך'], ['השקה!','קמפיין אמיתי + מדידת תוצאות'] ] },
-      { lvl:2, em:'🎵', c:'#F3E8FF', cat:['create'], name:'מוזיקה והפקה ב-AI', tag:'כותבים, מפיקים ומוציאים שיר אמיתי — מהמילים ועד העטיפה.',
+      { lvl:2, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>', c:'#F3E8FF', cat:['create'], name:'מוזיקה והפקה ב-AI', tag:'כותבים, מפיקים ומוציאים שיר אמיתי — מהמילים ועד העטיפה.',
         age:'9+', status:'soon', price:'', deliver:'סינגל מופק + עטיפה מעוצבת',
         sessions:[ ['איך שיר בנוי','בית, פזמון וז\'אנרים — מאזינים כמו מפיקים'], ['השיר הראשון שלך','יצירה ראשונה בכלי מוזיקת AI'], ['כתיבת מילים','נושא אישי, חריזה ומקצב'], ['הפקה','סגנון, קצב וסאונד'], ['שירה וקול','קולות AI מול קול אמיתי'], ['ג\'ינגל ופסקול','מוזיקה למיזם או לסרטון שלך'], ['מאסטרינג והפצה','איך שיר מגיע לספוטיפיי'], ['מופע השמעה','משמיעים מול ההורים'] ] },
-      { lvl:2, em:'✍️', c:'#FFF7E0', cat:['create','stage'], name:'סטוריטלינג וכתיבה עם AI', tag:'כותבים ומאיירים ספר או קומיקס — ומוציאים אותו לאור ברשת.',
+      { lvl:2, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>', c:'#FFF7E0', cat:['create','stage'], name:'סטוריטלינג וכתיבה עם AI', tag:'כותבים ומאיירים ספר או קומיקס — ומוציאים אותו לאור ברשת.',
         age:'9+', status:'soon', price:'', deliver:'ספר או קומיקס דיגיטלי מאויר, חי ברשת',
         sessions:[ ['כוחו של סיפור','מה גורם לנו להישאב לסיפור'], ['הגיבור שלך','בונים דמות עם עומק'], ['העולם והעלילה','בונים את עולם הסיפור'], ['כותבים פרק ראשון','AI כעורך שלך, לא ככותב במקומך'], ['דיאלוגים ורגש','איך דמויות מדברות אמיתי'], ['מאיירים','איורים בסגנון אחיד לספר'], ['הוצאה לאור דיגיטלית','עימוד והעלאה לרשת'], ['ערב השקה ספרותי','הקראות וספריית הכיתה'] ] },
-      { lvl:2, em:'🎤', c:'#FFE9EE', cat:['stage'], name:'עמידה מול קהל ופיצ\'ינג', tag:'הופכים פחד במה לכוח — ומסיימים בדמו-דיי אמיתי מול קהל.',
+      { lvl:2, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg>', c:'#FFE9EE', cat:['stage'], name:'עמידה מול קהל ופיצ\'ינג', tag:'הופכים פחד במה לכוח — ומסיימים בדמו-דיי אמיתי מול קהל.',
         age:'10+', status:'soon', price:'', deliver:'פיץ\' מלא עם מצגת, מוצג בערב הצגות',
         sessions:[ ['הפחד שכולם מכירים','ומה עושים איתו — נאום ראשון של 30 שניות'], ['מבנה של נאום','פתיח שתופס, מסר אחד, סגירה'], ['הפיץ\'','מנסחים פיץ\' למיזם שלך'], ['שפת גוף וקול','תרגול מול מצלמה'], ['מצגת מנצחת','מסר אחד לשקף, עיצוב עם AI'], ['שאלות קשות','התמודדות עם קהל ואלתור'], ['חזרה גנרלית','מצלמים, מנתחים ומלטשים'], ['ערב פיצ\'ים','דמו-דיי מול ההורים'] ] },
-      { lvl:2, em:'💰', c:'#E6F6F8', cat:['biz'], name:'כסף וחשיבה פיננסית', tag:'מבינים כסף באמת: תמחור, רווח, חיסכון והשקעות במשחק.',
+      { lvl:2, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>', c:'#E6F6F8', cat:['biz'], name:'כסף וחשיבה פיננסית', tag:'מבינים כסף באמת: תמחור, רווח, חיסכון והשקעות במשחק.',
         age:'10+', status:'soon', price:'', deliver:'תוכנית פיננסית למיזם + תיק וירטואלי',
         sessions:[ ['מה זה כסף בעצם','מאיפה בא, לאן הולך — תקציב ראשון'], ['הכספים של מיזם','כמה עולה להקים את הרעיון שלך?'], ['תמחור','כמה שווה המוצר שלך ולמה'], ['רווח והפסד','בונים מחשבון מיזם עם AI'], ['ריבית דריבית','הקסם של זמן — סימולציית חיסכון'], ['השקעות בגובה העיניים','פותחים תיק וירטואלי במשחק'], ['AI ככלי פיננסי','מחקר, השוואות ותקציב חכם'], ['המשחק הגדול','סימולציית ניהול עסק וסיכום'] ] },
-      { lvl:3, em:'💻', c:'#EEF0FF', cat:['build'], name:'תכנות באמצעות AI', tag:'הקורס המתקדם: Vibe Coding אמיתי עם Cursor, Claude ו-GitHub — בונים מערכת שלמה, לא רק אתר.',
+      { lvl:3, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>', c:'#EEF0FF', cat:['build'], name:'תכנות באמצעות AI', tag:'הקורס המתקדם: Vibe Coding אמיתי עם Cursor, Claude ו-GitHub — בונים מערכת שלמה, לא רק אתר.',
         age:'11+', status:'open', price:'1,250 ₪', count:'8 מפגשים', deliver:'פרויקט מלא באוויר: אתר, אוטומציות וסוכן AI משלך', prereq:'אחרי יזמות',
         sessions:[ ['מי נגד מי + הסביבה המקצועית','מורה נבוכים לעולם ה-AI, ומקימים את סביבת העבודה: Cursor · Claude · Terminal'], ['GitHub','בית הקוד שלך: Git, ענן ופרסום אתר חי דרך GitHub Pages'], ['בונים את ה"פנים"','דף נחיתה ואתר ראשון — הצד שהמשתמש רואה'], ['ה"מוח" של האתר','מחברים את האתר ל-Google Sheets ונותנים לו זיכרון'], ['הפרויקט שלך','אפיון, תכנון ומפת דרכים למיזם שלך עם AI'], ['בונים סוכן AI','מהתיאוריה לסוכן שעובד — שלב אחרי שלב'], ['אוטומציות וחיבורים אמיתיים','תהליכים שרצים בשבילך לבד + חיבור למערכות מהעולם האמיתי'], ['השקה וצמיחה','דוחפים לאוויר, מלטשים ומציגים את הפרויקט'] ] },
-      { lvl:3, em:'🤖', c:'#F1EBFF', cat:['build'], name:'צוות סוכני AI', tag:'הרמה שאחרי המתקדם: לא סוכן אחד — צוות שלם שעובד בשבילך מסביב לשעון.',
+      { lvl:3, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>', c:'#F1EBFF', cat:['build'], name:'צוות סוכני AI', tag:'הרמה שאחרי המתקדם: לא סוכן אחד — צוות שלם שעובד בשבילך מסביב לשעון.',
         age:'12+', status:'soon', price:'', deliver:'מערכת רב-סוכנית חיה שרצה לבד ומחוברת לוואטסאפ או טלגרם', prereq:'אחרי תכנות ב-AI',
         sessions:[ ['מסוכן אחד לצוות','מה ההבדל בין סוכן בודד לצוות סוכנים — ובוחרים משימה גדולה'], ['סוכן עם זיכרון','הסוכן זוכר שיחות ומידע לאורך זמן'], ['צוות סוכנים א\'','שני סוכנים שמדברים ביניהם: חוקר וכותב'], ['צוות סוכנים ב\'','סוכן-מנהל שמחלק משימות לצוות'], ['הסוכן יוצא לעולם','בוט וואטסאפ או טלגרם אמיתי שאנשים מדברים איתו'], ['רץ לבד 24/7','תזמון, ענן והתראות'], ['מוקד הבקרה','דשבורד מעקב, עלויות ובטיחות'], ['דמו-דיי','הדגמה חיה של המערכת הרב-סוכנית'] ] },
-      { lvl:3, em:'🎥', c:'#FDF0E6', cat:['create'], name:'סרטונים 2 — "האולפן"', tag:'מסרטון בודד להפקה שלמה: מיני-סדרה ועבודה ללקוח אמיתי.',
+      { lvl:3, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>', c:'#FDF0E6', cat:['create'], name:'סרטונים 2 — "האולפן"', tag:'מסרטון בודד להפקה שלמה: מיני-סדרה ועבודה ללקוח אמיתי.',
         age:'10+', status:'soon', price:'', deliver:'מיני-סדרה או סרט קצר + הפקה ללקוח אמיתי', prereq:'אחרי סרטונים ב-AI',
         sessions:[ ['מ"סרטון" ל"הפקה"','בוחרים: מיני-סדרה, סרט קצר או קמפיין'], ['דמות עקבית','אותה דמות ואותו סגנון לאורך פרקים'], ['תסריט לסדרה','קשת עלילתית ופרק פיילוט'], ['הפקה מתקדמת א\'','תנועות מצלמה וסצנות מורכבות'], ['הפקה מתקדמת ב\'','ליפ-סינק, קול קבוע וסאונד דיזיין'], ['לקוח אמיתי','מפיקים סרטון לעסק אמיתי בליווי המנחה'], ['המאסטר','עריכה סופית + טריילר ושורטס'], ['פסטיבל הקרנה','מקרינים מול ההורים ומשיקים ערוץ'] ] },
-      { lvl:3, em:'📈', c:'#E8F7EE', cat:['biz'], name:'השקעות ושוק ההון לנוער', tag:'ההמשך של כסף וחשיבה פיננסית — לומדים שוק ההון בגובה העיניים. תוכן לימודי בלבד, לא ייעוץ השקעות.',
+      { lvl:3, em:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#1E2749"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>', c:'#E8F7EE', cat:['biz'], name:'השקעות ושוק ההון לנוער', tag:'ההמשך של כסף וחשיבה פיננסית — לומדים שוק ההון בגובה העיניים. תוכן לימודי בלבד, לא ייעוץ השקעות.',
         age:'13+', status:'soon', price:'', deliver:'תיק וירטואלי מנומק + תוכנית פיננסית אישית', prereq:'אחרי כסף וחשיבה פיננסית',
         sessions:[ ['איך הבורסה עובדת','מניות ומדדים — פותחים תיק וירטואלי'], ['לקרוא חברה','הכנסות, רווח, מותג מול עסק'], ['מחקר עם AI','תהליך חכם — ומה לא נותנים ל-AI להחליט'], ['סיכון ופיזור','למה לא שמים הכול על מניה אחת'], ['פסיכולוגיה של משקיעים','פחד, חמדנות ובאזז ברשתות'], ['טווח ארוך מול מסחר','ריבית דריבית, קרנות ומדדים'], ['התוכנית האישית שלך','בונים כללים לגילך'], ['ועידת המשקיעים הצעירים','מציגים תיק ותובנות'] ] }
     ];
-    const STATUS = { open: ['open','🟢 ההרשמה פתוחה'], first: ['soon','🔜 מחזור ראשון בקרוב'], soon: ['soon','בקרוב'] };
+    const STATUS = { open: ['open','● ההרשמה פתוחה'], first: ['soon','מחזור ראשון בקרוב'], soon: ['soon','בקרוב'] };
     const cChips = co => {
         let h = `<span class="chip">גיל ${co.age}</span><span class="chip">${co.count || '8 מפגשים'}</span>`;
         if (co.prereq) h += `<span class="chip">${co.prereq}</span>`;
@@ -3080,7 +3073,7 @@ gtag('config', 'AW-18061574299');
         el.innerHTML = `<span class="on-em" style="background:${co.c}">${co.em}</span>
             <h4>${co.name}</h4>
             <p>${co.tag}</p>
-            <div class="on-meta"><span class="chip">גיל ${co.age}</span><span class="chip">${co.count || '8 מפגשים'}</span><span class="chip five">👥 עד 5 בקבוצה</span><span class="chip ${STATUS[co.status][0]}">${STATUS[co.status][1]}</span></div>
+            <div class="on-meta"><span class="chip">גיל ${co.age}</span><span class="chip">${co.count || '8 מפגשים'}</span><span class="chip five"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>  עד 5 בקבוצה</span><span class="chip ${STATUS[co.status][0]}">${STATUS[co.status][1]}</span></div>
             <div class="on-price">${co.price || '<small>המחיר יעודכן בקרוב</small>'}</div>
             <a class="btn ${co.status === 'open' ? 'btn-ink' : 'btn-wa'}" href="${cta.href}"${cta.ext ? ' target="_blank" rel="noopener"' : ''}>${cta.label} <span class="arr">←</span></a>
             <span class="c-more" style="margin-top:12px;justify-content:center;display:flex;">לסילבוס המלא <span class="arr">←</span></span>`;
@@ -3092,10 +3085,10 @@ gtag('config', 'AW-18061574299');
     // ===== חפיסות תחום + מניפת קלפים (כל המניפות בנויות מראש — החלפה מיידית) =====
     (function fan(){
         const DECKS = [
-            { id: 'create', em: '🎨', label: 'ליצור',          c1: '#EC4899', c2: '#F97316', glow: 'rgba(236,72,153,.4)' },
-            { id: 'build',  em: '💻', label: 'לבנות ולתכנת',   c1: '#6366F1', c2: '#8B5CF6', glow: 'rgba(99,102,241,.42)' },
-            { id: 'biz',    em: '💼', label: 'עסקים וכסף',     c1: '#0D9488', c2: '#10B981', glow: 'rgba(13,148,136,.4)' },
-            { id: 'stage',  em: '🎤', label: 'במה והשפעה',     c1: '#F59E0B', c2: '#F43F5E', glow: 'rgba(245,158,11,.4)' }
+            { id: 'create', em: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#fff"><circle cx="13.5" cy="6.5" r=".9"/><circle cx="17.5" cy="10.5" r=".9"/><circle cx="8.5" cy="7.5" r=".9"/><circle cx="6.5" cy="12.5" r=".9"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.12a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg>', label: 'ליצור',          c1: '#EC4899', c2: '#F97316', glow: 'rgba(236,72,153,.4)' },
+            { id: 'build',  em: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#fff"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>', label: 'לבנות ולתכנת',   c1: '#6366F1', c2: '#8B5CF6', glow: 'rgba(99,102,241,.42)' },
+            { id: 'biz',    em: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#fff"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg>', label: 'עסקים וכסף',     c1: '#0D9488', c2: '#10B981', glow: 'rgba(13,148,136,.4)' },
+            { id: 'stage',  em: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:0px;flex-shrink:0;color:#fff"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg>', label: 'במה והשפעה',     c1: '#F59E0B', c2: '#F43F5E', glow: 'rgba(245,158,11,.4)' }
         ];
         const decksEl = document.getElementById('decks'), stage = document.getElementById('fanStage');
         const byCat = id => COURSES.map((co, i) => ({ co, i })).filter(x => (x.co.cat || []).includes(id));
@@ -3132,7 +3125,7 @@ gtag('config', 'AW-18061574299');
                     <p class="fc-tag">${co.tag}</p>
                     <div class="fc-meta">
                         <span class="chip">גיל ${co.age}</span>
-                        <span class="chip five">👥 עד 5</span>
+                        <span class="chip five"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> עד 5</span>
                         <span class="chip ${STATUS[co.status][0]}">${co.status === 'open' ? 'פתוח' : 'בקרוב'}</span>
                     </div>
                     <div class="fc-foot">
@@ -3171,7 +3164,7 @@ gtag('config', 'AW-18061574299');
     const cm = document.getElementById('courseModal');
     function openCourse(i) {
         const co = COURSES[i];
-        document.getElementById('mEm').textContent = co.em;
+        document.getElementById('mEm').innerHTML = co.em;
         document.getElementById('mEm').style.background = co.c;
         document.getElementById('mName').textContent = co.name;
         document.getElementById('mTag').textContent = co.tag;
@@ -3196,9 +3189,9 @@ gtag('config', 'AW-18061574299');
     // קיר סטיקרים — מיומנויות
     /* פלטת הצ'יפים: צבעי המותג בלבד (סגול/טורקיז/כהה) — בלי צהוב/ורוד/ירוק זרים */
     const SKILLS = [
-        ['🚀','יזמות','#6366F1','#fff'], ['🤖','בינה מלאכותית','#101433','#fff'], ['🌐','בניית אתרים','#4DD6E8','#101433'],
-        ['📱','אפליקציות','#8B5CF6','#fff'], ['🎨','חשיבה יצירתית','#B79CFF','#101433'], ['📣','שיווק','#6366F1','#fff'],
-        ['🎤','הצגת רעיון','#4DD6E8','#101433'], ['💡','פתרון בעיות','#101433','#fff'], ['🧠','חשיבה ביקורתית','#B79CFF','#101433'], ['⚡','Vibe Coding','#0EA5B7','#fff']
+        ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>','יזמות','#6366F1','#fff'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>','בינה מלאכותית','#101433','#fff'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>','בניית אתרים','#4DD6E8','#101433'],
+        ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/></svg>','אפליקציות','#8B5CF6','#fff'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><circle cx="13.5" cy="6.5" r=".9"/><circle cx="17.5" cy="10.5" r=".9"/><circle cx="8.5" cy="7.5" r=".9"/><circle cx="6.5" cy="12.5" r=".9"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.12a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg>','חשיבה יצירתית','#B79CFF','#101433'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>','שיווק','#6366F1','#fff'],
+        ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg>','הצגת רעיון','#4DD6E8','#101433'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>','פתרון בעיות','#101433','#fff'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M12 5v13"/></svg>','חשיבה ביקורתית','#B79CFF','#101433'], ['<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2.5px;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>','Vibe Coding','#0EA5B7','#fff']
     ];
     const stickerHtml = s => { const dark = s[2] === '#101433' || s[2] === '#0EA5B7' || s[2] === '#6366F1' || s[2] === '#8B5CF6'; return `<span class="sticker" style="--stc:${s[2]};--stp:${dark ? '62%' : '40%'};color:${dark ? '#fff' : 'var(--ink)'}"><span class="em">${s[0]}</span>${s[1]}</span>`; };
     // כל שורה מציגה את כל 10 המיומנויות (רצף רחב מהמסך — אין כפילות נראית), בסדר שונה
@@ -3401,7 +3394,7 @@ gtag('config', 'AW-18061574299');
             setTimeout(() => {
                 if (interacted || wrap.classList.contains('open') || document.hidden) return;
                 askWrap.classList.add('knock');
-                askOverride = 'יש לכם שאלה? אני כאן 👋';
+                askOverride = 'יש לכם שאלה? אני כאן';
                 setTimeout(() => { askWrap.classList.remove('knock'); askOverride = null; }, 2600);
             }, 7000);
         }, { once: true });
@@ -3502,8 +3495,8 @@ gtag('config', 'AW-18061574299');
             f.addEventListener('submit', e => {
                 e.preventDefault();
                 const nm = f.nm.value.trim(), ph = f.ph.value.trim();
-                open(WA(`היי! אשמח שתחזרו אליי לגבי הקורסים 🙂\nשם: ${nm}\nטלפון: ${ph}`), '_blank');
-                typeBot('מעולה! פתחתי לכם וואטסאפ עם הפרטים מוכנים — רק ללחוץ שליחה, ונחזור אליכם אישית. 🙌');
+                open(WA(`היי! אשמח שתחזרו אליי לגבי הקורסים\nשם: ${nm}\nטלפון: ${ph}`), '_blank');
+                typeBot('מעולה! פתחתי לכם וואטסאפ עם הפרטים מוכנים — רק ללחוץ שליחה, ונחזור אליכם אישית.');
             });
             log.appendChild(f);
             log.scrollTop = log.scrollHeight;
@@ -3514,17 +3507,17 @@ gtag('config', 'AW-18061574299');
 
         // --- מוח הדמו (יוחלף בקלוד) ---
         const ACT = {
-            map:    { t: 'scroll', sel: '#courses', label: '🗺️ למפת הקורסים' },
-            reg:    { t: 'link', href: 'https://my.ai-lab.co.il/join', label: '📝 להרשמה' },
-            wa:     { t: 'wa', msg: 'היי, אני מתעניין בקורסים של AI Lab', label: '💬 דברו איתנו בוואטסאפ' },
-            waCall: { t: 'wa', msg: 'היי, אשמח לתאם שיחת היכרות קצרה 🙂', label: '📞 תיאום שיחה בוואטסאפ' },
+            map:    { t: 'scroll', sel: '#courses', label: 'למפת הקורסים' },
+            reg:    { t: 'link', href: 'https://my.ai-lab.co.il/join', label: 'להרשמה' },
+            wa:     { t: 'wa', msg: 'היי, אני מתעניין בקורסים של AI Lab', label: 'דברו איתנו בוואטסאפ' },
+            waCall: { t: 'wa', msg: 'היי, אשמח לתאם שיחת היכרות קצרה', label: 'תיאום שיחה בוואטסאפ' },
             lead:   { t: 'lead' },
-            c1:     { t: 'course', i: 0, label: '🚀 סילבוס יזמות ובינה מלאכותית' },
-            c2:     { t: 'course', i: 7, label: '💻 סילבוס תכנות ב-AI' },
-            sites:  { t: 'scroll', sel: '#wall', label: '🌐 לקיר האתרים' },
-            vids:   { t: 'scroll', sel: '#videos', label: '🎬 לסרטוני התלמידים' },
-            portal: { t: 'link', href: 'https://my.ai-lab.co.il', label: '🔑 לאזור האישי' },
-            adult:  { t: 'link', href: 'https://starter.ai-lab.co.il', label: '👨‍💼 לקורסי המבוגרים' }
+            c1:     { t: 'course', i: 0, label: 'סילבוס יזמות ובינה מלאכותית' },
+            c2:     { t: 'course', i: 7, label: 'סילבוס תכנות ב-AI' },
+            sites:  { t: 'scroll', sel: '#wall', label: 'לקיר האתרים' },
+            vids:   { t: 'scroll', sel: '#videos', label: 'לסרטוני התלמידים' },
+            portal: { t: 'link', href: 'https://my.ai-lab.co.il', label: 'לאזור האישי' },
+            adult:  { t: 'link', href: 'https://starter.ai-lab.co.il', label: 'לקורסי המבוגרים' }
         };
         const INTENTS = [
             { k: ['שיחה', 'פגישה', 'לתאם', 'תיאום', 'טלפון', 'שיחת', 'לדבר עם'],
@@ -3535,8 +3528,8 @@ gtag('config', 'AW-18061574299');
               r: { text: 'הקורסים מתאימים לגילאי 9–16, בקבוצות גיל נפרדות של עד 5 תלמידים. מתחילים מקורס היזמות — משם כל המסלולים נפתחים. ספרו לי בוואטסאפ בן כמה הילד ונתאים בדיוק.', actions: [ACT.c1, ACT.waCall] } },
             { k: ['דוגמ', 'אתרים של', 'פרויקט', 'בנו', 'תוצאות'],
               r: { text: 'יש לנו עשרות אתרים חיים שילדים בנו — כולם באוויר באינטרנט. הנה כמה מהאהובים עליי, או שתגללו לקיר המלא:', actions: [
-                  { t: 'link', href: 'https://ai-lab.co.il/bookmatch/', label: '📚 BookMatch — מאיה, 11' },
-                  { t: 'link', href: 'https://ai-lab.co.il/drivelog/', label: '🚗 DriveLog — גבריאל, 16' },
+                  { t: 'link', href: 'https://ai-lab.co.il/bookmatch/', label: 'BookMatch — מאיה, 11' },
+                  { t: 'link', href: 'https://ai-lab.co.il/drivelog/', label: 'DriveLog — גבריאל, 16' },
                   ACT.sites] } },
             { k: ['סרטון', 'וידאו', 'סרט'],
               r: { text: 'בסדנת הסרטונים שלנו תלמידים יוצרים סרטוני AI אמיתיים — יש 8 באתר עכשיו, עם עוד בדרך. קורס סרטונים מלא נפתח בקרוב!', actions: [ACT.vids, ACT.wa] } },
@@ -3549,22 +3542,22 @@ gtag('config', 'AW-18061574299');
             { k: ['אזור אישי', 'פורטל', 'חומר', 'הקלטות'],
               r: { text: 'כל תלמיד מקבל אזור אישי: כל המפגשים, הקלטות, תרגילים, ארגז כלים — ועוזר AI שזמין תמיד לשאלות על הלימודים.', actions: [ACT.portal] } },
             { k: ['שלום', 'היי', 'הי ', 'בוקר', 'ערב'],
-              r: { text: 'היי! 👋 כיף שבאתם. אני הסוכן של AI Lab — שאלו אותי על הקורסים, המחירים, דוגמאות של תלמידים, או תיאום שיחת היכרות.', actions: [ACT.map, ACT.waCall] } },
+              r: { text: 'היי! כיף שבאתם. אני הסוכן של AI Lab — שאלו אותי על הקורסים, המחירים, דוגמאות של תלמידים, או תיאום שיחת היכרות.', actions: [ACT.map, ACT.waCall] } },
             { k: ['זום', 'איפה', 'מיקום', 'פרונטלי', 'מפגש'],
               r: { text: 'המפגשים חיים בזום — קבוצות קטנות של עד 5 תלמידים, כך שכל ילד מקבל יחס אישי מכל מקום בארץ.', actions: [ACT.map, ACT.wa] } }
         ];
         function demoBrain(text) {
             const t = text.trim();
             for (const it of INTENTS) if (it.k.some(k => t.includes(k))) return it.r;
-            return { text: 'שאלה מעולה — את זו נשמור לצוות שלנו 🙂 בוואטסאפ עונים מהר. ובינתיים אפשר להציץ במפת הקורסים או להשאיר פרטים.',
+            return { text: 'שאלה מעולה — את זו נשמור לצוות שלנו — בוואטסאפ עונים מהר. ובינתיים אפשר להציץ במפת הקורסים או להשאיר פרטים.',
                      actions: [ACT.wa, ACT.map, ACT.lead] };
         }
 
         // --- צ'יפים ---
         const CHIPS = [
-            { l: '📞 תיאום שיחה', q: 'אפשר לתאם שיחה?' },
-            { l: '🎓 הקורסים והמחירים', q: 'כמה עולה קורס?' },
-            { l: '✍️ השארת פרטים', q: 'אני רוצה להשאיר פרטים' }
+            { l: 'תיאום שיחה', q: 'אפשר לתאם שיחה?' },
+            { l: 'הקורסים והמחירים', q: 'כמה עולה קורס?' },
+            { l: 'השארת פרטים', q: 'אני רוצה להשאיר פרטים' }
         ];
         CHIPS.forEach(c => {
             const b = document.createElement('button');
@@ -3589,7 +3582,7 @@ gtag('config', 'AW-18061574299');
                 if (li < LINES.length) setTimeout(bt, 340);
                 else setTimeout(() => {
                     boot.remove();
-                    respond({ text: 'היי! 👋 אני הסוכן של AI Lab. במקום לגלול ולחפש — פשוט שאלו אותי, או בחרו נושא למטה.', actions: [] });
+                    respond({ text: 'היי! אני הסוכן של AI Lab. במקום לגלול ולחפש — פשוט שאלו אותי, או בחרו נושא למטה.', actions: [] });
                 }, 420);
             })();
         }

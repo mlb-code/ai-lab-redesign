@@ -219,8 +219,8 @@
         f.addEventListener('submit', function(e){
             e.preventDefault();
             var nm = f.nm.value.trim(), ph = f.ph.value.trim();
-            open(WA('היי! אשמח שתחזרו אליי לגבי הקורסים 🙂\nשם: ' + nm + '\nטלפון: ' + ph), '_blank');
-            typeBot('מעולה! פתחתי לכם וואטסאפ עם הפרטים מוכנים — רק ללחוץ שליחה, ונחזור אליכם אישית. 🙌');
+            open(WA('היי! אשמח שתחזרו אליי לגבי הקורסים\nשם: ' + nm + '\nטלפון: ' + ph), '_blank');
+            typeBot('מעולה! פתחתי לכם וואטסאפ עם הפרטים מוכנים — רק ללחוץ שליחה, ונחזור אליכם אישית.');
         });
         log.appendChild(f);
         log.scrollTop = log.scrollHeight;
@@ -229,14 +229,14 @@
 
     // ---------- מוח דמו (נפילה כשאין רשת) ----------
     var ACT = {
-        map:    { t: 'link', href: '/#courses', label: '🗺️ למפת הקורסים' },
-        reg:    { t: 'link', href: 'https://my.ai-lab.co.il/join', label: '📝 להרשמה' },
-        wa:     { t: 'wa', msg: 'היי, אני מתעניין בקורסים של AI Lab', label: '💬 דברו איתנו בוואטסאפ' },
-        waCall: { t: 'wa', msg: 'היי, אשמח לתאם שיחת היכרות קצרה 🙂', label: '📞 תיאום שיחה בוואטסאפ' },
+        map:    { t: 'link', href: '/#courses', label: 'למפת הקורסים' },
+        reg:    { t: 'link', href: 'https://my.ai-lab.co.il/join', label: 'להרשמה' },
+        wa:     { t: 'wa', msg: 'היי, אני מתעניין בקורסים של AI Lab', label: 'דברו איתנו בוואטסאפ' },
+        waCall: { t: 'wa', msg: 'היי, אשמח לתאם שיחת היכרות קצרה', label: 'תיאום שיחה בוואטסאפ' },
         lead:   { t: 'lead' },
-        sites:  { t: 'link', href: '/#wall', label: '🌐 לקיר האתרים' },
-        portal: { t: 'link', href: 'https://my.ai-lab.co.il', label: '🔑 לאזור האישי' },
-        adult:  { t: 'link', href: 'https://starter.ai-lab.co.il', label: '👨‍💼 לקורסי המבוגרים' }
+        sites:  { t: 'link', href: '/#wall', label: 'לקיר האתרים' },
+        portal: { t: 'link', href: 'https://my.ai-lab.co.il', label: 'לאזור האישי' },
+        adult:  { t: 'link', href: 'https://starter.ai-lab.co.il', label: 'לקורסי המבוגרים' }
     };
     var INTENTS = [
         { k: ['שיחה', 'פגישה', 'לתאם', 'תיאום', 'טלפון'], r: { text: 'בשמחה! הדרך הכי מהירה היא וואטסאפ — עונים שם אישית ומהר. אפשר גם להשאיר פרטים כאן ונחזור אליכם.', actions: [ACT.waCall, ACT.lead] } },
@@ -247,19 +247,19 @@
         { k: ['הרשמ', 'להירשם', 'נרשמ', 'פרטים'], r: { text: 'קלי קלות — משאירים פרטים כאן ואנחנו חוזרים אליכם, או נרשמים ישירות:', actions: [ACT.lead, ACT.reg] } },
         { k: ['מבוגר', 'למבוגרים'], r: { text: 'בטח! יש לנו את AI Lab Starter — קורסי AI למבוגרים בלי רקע טכני.', actions: [ACT.adult, ACT.wa] } },
         { k: ['אזור אישי', 'פורטל', 'הקלטות'], r: { text: 'כל תלמיד מקבל אזור אישי: מפגשים, הקלטות, חומרים — ועוזר AI שזמין תמיד.', actions: [ACT.portal] } },
-        { k: ['שלום', 'היי', 'הי '], r: { text: 'היי! 👋 אני הסוכן של AI Lab — שאלו אותי על הקורסים, המחירים או תיאום שיחת היכרות.', actions: [ACT.map, ACT.waCall] } },
+        { k: ['שלום', 'היי', 'הי '], r: { text: 'היי! אני הסוכן של AI Lab — שאלו אותי על הקורסים, המחירים או תיאום שיחת היכרות.', actions: [ACT.map, ACT.waCall] } },
         { k: ['זום', 'איפה', 'מיקום', 'מפגש'], r: { text: 'המפגשים חיים בזום — קבוצות קטנות של עד 5 תלמידים, מכל מקום בארץ.', actions: [ACT.map, ACT.wa] } }
     ];
     function demoBrain(text) {
         var t = text.trim();
         for (var i = 0; i < INTENTS.length; i++) if (INTENTS[i].k.some(function(k){ return t.indexOf(k) !== -1; })) return INTENTS[i].r;
-        return { text: 'שאלה מעולה — את זו נשמור לצוות שלנו 🙂 בוואטסאפ עונים מהר, ובינתיים אפשר להציץ במפת הקורסים.', actions: [ACT.wa, ACT.map, ACT.lead] };
+        return { text: 'שאלה מעולה — את זו נשמור לצוות שלנו בוואטסאפ עונים מהר, ובינתיים אפשר להציץ במפת הקורסים.', actions: [ACT.wa, ACT.map, ACT.lead] };
     }
 
     // ---------- צ'יפים ----------
-    [{ l: '📞 תיאום שיחה', q: 'אפשר לתאם שיחה?' },
-     { l: '🎓 הקורסים והמחירים', q: 'כמה עולה קורס?' },
-     { l: '✍️ השארת פרטים', q: 'אני רוצה להשאיר פרטים' }].forEach(function(c){
+    [{ l: 'תיאום שיחה', q: 'אפשר לתאם שיחה?' },
+     { l: 'הקורסים והמחירים', q: 'כמה עולה קורס?' },
+     { l: 'השארת פרטים', q: 'אני רוצה להשאיר פרטים' }].forEach(function(c){
         var b = document.createElement('button');
         b.className = 'ag-act'; b.type = 'button'; b.textContent = c.l;
         b.addEventListener('click', function(){ send(c.q); });
@@ -267,7 +267,7 @@
     });
 
     function greet() {
-        respond({ text: 'היי! 👋 אני הסוכן של AI Lab. שאלו אותי כל דבר על הקורסים — או בחרו נושא למטה.', actions: [] });
+        respond({ text: 'היי! אני הסוכן של AI Lab. שאלו אותי כל דבר על הקורסים — או בחרו נושא למטה.', actions: [] });
     }
 
     // ---------- המוח האמיתי + נפילה לדמו ----------
