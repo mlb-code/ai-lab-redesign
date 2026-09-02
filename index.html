@@ -2040,7 +2040,7 @@ gtag('config', 'AW-18061574299');
         }
         :root { --z: 1; }
         .hero {
-            height: auto; min-height: 100svh;
+            height: auto; min-height: 100vh; min-height: 100svh;
             display: flex; flex-direction: column; justify-content: center;
             padding: calc(92px + env(safe-area-inset-top)) 0 44px;
         }
@@ -2172,7 +2172,7 @@ gtag('config', 'AW-18061574299');
         a.grating-m b { font-size: .98rem; }
         a.grating-m .gr-txt { font-size: .82rem; }
         .agent-wrap { padding: 0; align-items: flex-end; }
-        .agent-box { width: 100%; max-width: 100%; min-width: 0; height: calc(100svh - 74px - env(safe-area-inset-top)); max-height: none; border-radius: 22px 22px 0 0; }
+        .agent-box { width: 100%; max-width: 100%; min-width: 0; height: calc(100vh - 74px - env(safe-area-inset-top)); height: calc(100svh - 74px - env(safe-area-inset-top)); max-height: none; border-radius: 22px 22px 0 0; }
         .agent-head { flex-wrap: wrap; row-gap: 4px; }
         .ag-mode { font-size: .68rem; }
         .ag-readout { flex-wrap: wrap; row-gap: 3px; font-size: .66rem; }
@@ -2239,7 +2239,7 @@ gtag('config', 'AW-18061574299');
             align-items: flex-start;
             padding: calc(74px + env(safe-area-inset-top)) 14px calc(84px + env(safe-area-inset-bottom));
         }
-        .modal-box { padding: 26px 20px 0; max-height: calc(100svh - 172px); border-radius: 20px; }
+        .modal-box { padding: 26px 20px 0; max-height: calc(100vh - 172px); max-height: calc(100svh - 172px); border-radius: 20px; }
         .modal-x { top: 12px; left: 12px; width: 42px; height: 42px; }
         .mc-cta { flex-direction: column; gap: 10px; }
         .mc-cta .btn { flex: none; width: 100%; }
@@ -2320,6 +2320,17 @@ gtag('config', 'AW-18061574299');
         .hero-actions .cr-row .holo-wrap .btn { width: 100%; }
         .hero-actions a.grating-m { order: 10; flex: 0 0 auto; width: max-content; height: auto; padding: 8px 18px; margin: 4px auto 0; }
         .hero-actions .hero-comm { order: -1; }
+    }
+
+    /* ===== גיבוי לדפדפנים בלי backdrop-filter (WebView ישן / פיירפוקס לפני 103) =====
+       רק background-color — השכבה התחתונה ביותר, לכן הגרדיאנטים והצללים של הזכוכית
+       נשארים בדיוק כמו שהם. בלי זה הפאנלים היו שקופים על גבי הרקע החי והטקסט נבלע. */
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .nav-inner, .mobile-menu, .mobile-bar, .burger,
+        .modal-box, .agent-box, .ask-bar, .hub-item,
+        .on-card, .v-card, .step, .founder-card {
+            background-color: rgba(11, 14, 36, .93);
+        }
     }
 </style>
 </head>
