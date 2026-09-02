@@ -2330,7 +2330,7 @@ gtag('config', 'AW-18061574299');
             <a href="#faq">שאלות</a>
         </div>
         <a href="https://my.ai-lab.co.il" class="nav-cta nav-portal">אזור אישי</a>
-        <a href="https://my.ai-lab.co.il/courses" class="nav-cta">הרשמה</a>
+        <a href="https://my.ai-lab.co.il/join" class="nav-cta">הרשמה</a>
         <button class="burger" id="burger" aria-label="תפריט"><span></span><span></span><span></span></button>
     </div>
 </nav>
@@ -2349,7 +2349,7 @@ gtag('config', 'AW-18061574299');
         <a class="mlink" href="#faq">שאלות נפוצות</a>
     </div>
     <div class="m-actions">
-        <a href="https://my.ai-lab.co.il/courses" class="btn btn-primary">הרשמה</a>
+        <a href="https://my.ai-lab.co.il/join" class="btn btn-primary">הרשמה</a>
         <a href="https://my.ai-lab.co.il" class="btn btn-ghost-dark">אזור אישי</a>
         <a href="https://wa.me/972546500795" target="_blank" rel="noopener" class="btn btn-wa">וואטסאפ</a>
     </div>
@@ -2826,7 +2826,7 @@ gtag('config', 'AW-18061574299');
             <h4 class="mc-syl" id="mSylTitle">הסילבוס</h4>
             <ol class="mc-sessions" id="mSessions"></ol>
             <div class="mc-cta">
-                <a href="https://my.ai-lab.co.il/courses" class="btn btn-ink" id="mRegister">להרשמה <span class="arr">←</span></a>
+                <a href="https://my.ai-lab.co.il/join" class="btn btn-ink" id="mRegister">להרשמה <span class="arr">←</span></a>
                 <a href="https://wa.me/972546500795?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%99%D7%96%D7%9E%D7%95%D7%AA%20%D7%95-AI" target="_blank" rel="noopener" class="btn btn-ghost">שאלו אותנו בוואטסאפ</a>
             </div>
         </div>
@@ -2887,7 +2887,7 @@ gtag('config', 'AW-18061574299');
             <p>שיחה קצרה בוואטסאפ — ונמצא יחד את המסלול המתאים.</p>
             <div class="hero-actions">
                 <a href="https://wa.me/972546500795?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%99%D7%96%D7%9E%D7%95%D7%AA%20%D7%95-AI" target="_blank" rel="noopener" class="btn btn-wa">דברו איתנו בוואטסאפ</a>
-                <a href="https://my.ai-lab.co.il/courses" class="btn btn-primary">להרשמה <span class="arr">←</span></a>
+                <a href="https://my.ai-lab.co.il/join" class="btn btn-primary">להרשמה <span class="arr">←</span></a>
             </div>
         </div>
 </div>
@@ -2911,7 +2911,7 @@ gtag('config', 'AW-18061574299');
                 <li><a href="#builders">הפרויקטים של התלמידים</a></li>
                 <li><a href="#videos">סרטוני תלמידים</a></li>
                 <li><a href="https://my.ai-lab.co.il">אזור אישי</a></li>
-                <li><a href="https://my.ai-lab.co.il/courses">הרשמה</a></li>
+                <li><a href="https://my.ai-lab.co.il/join">הרשמה</a></li>
             </ul>
         </div>
         <div class="foot-col">
@@ -3065,7 +3065,7 @@ gtag('config', 'AW-18061574299');
     // ===== כפתור חכם: פתוח → הרשמה · אחרת → עדכנו אותי =====
     const WA = 'https://wa.me/972546500795?text=';
     const ctaFor = co => co.status === 'open'
-        ? { label: 'להרשמה', href: 'https://my.ai-lab.co.il/courses', ext: false }
+        ? { label: 'להרשמה', href: 'https://my.ai-lab.co.il/join', ext: false }
         : { label: 'עדכנו אותי כשנפתח', href: WA + encodeURIComponent('היי, אשמח שתעדכנו אותי כשייפתח הקורס "' + co.name + '" ב-AI Lab'), ext: true };
 
     // ===== בלוק "נרשמים עכשיו" =====
@@ -3515,7 +3515,7 @@ gtag('config', 'AW-18061574299');
         // --- מוח הדמו (יוחלף בקלוד) ---
         const ACT = {
             map:    { t: 'scroll', sel: '#courses', label: '🗺️ למפת הקורסים' },
-            reg:    { t: 'link', href: 'https://my.ai-lab.co.il/courses', label: '📝 להרשמה' },
+            reg:    { t: 'link', href: 'https://my.ai-lab.co.il/join', label: '📝 להרשמה' },
             wa:     { t: 'wa', msg: 'היי, אני מתעניין בקורסים של AI Lab', label: '💬 דברו איתנו בוואטסאפ' },
             waCall: { t: 'wa', msg: 'היי, אשמח לתאם שיחת היכרות קצרה 🙂', label: '📞 תיאום שיחה בוואטסאפ' },
             lead:   { t: 'lead' },

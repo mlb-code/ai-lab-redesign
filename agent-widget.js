@@ -230,7 +230,7 @@
     // ---------- מוח דמו (נפילה כשאין רשת) ----------
     var ACT = {
         map:    { t: 'link', href: '/#courses', label: '🗺️ למפת הקורסים' },
-        reg:    { t: 'link', href: 'https://my.ai-lab.co.il/courses', label: '📝 להרשמה' },
+        reg:    { t: 'link', href: 'https://my.ai-lab.co.il/join', label: '📝 להרשמה' },
         wa:     { t: 'wa', msg: 'היי, אני מתעניין בקורסים של AI Lab', label: '💬 דברו איתנו בוואטסאפ' },
         waCall: { t: 'wa', msg: 'היי, אשמח לתאם שיחת היכרות קצרה 🙂', label: '📞 תיאום שיחה בוואטסאפ' },
         lead:   { t: 'lead' },
